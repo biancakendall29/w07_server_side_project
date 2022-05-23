@@ -15,12 +15,14 @@ public class Gym {
     @Column
     private String name;
 
-    @OneToMany //todo: finish typing rest of code for this relationship
+    @OneToMany //todo: finish typing rest of code for this relationship & JSON
     private List<Trainer> trainers;
 
     @OneToOne
+    @JoinColumn(name = "gym_leader_id", referencedColumnName = "id") //double check this later
     private GymLeader gymLeader;
 
+//    CONSTRUCTORS
     public Gym(String name, GymLeader gymLeader) {
         this.name = name;
         this.trainers = new ArrayList<>();
@@ -28,6 +30,8 @@ public class Gym {
     }
 
     public Gym () {}
+
+//    GETTERS & SETTERS
 
     public Long getId() {
         return id;
