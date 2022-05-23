@@ -15,7 +15,8 @@ public class GymLeader {
     @Column
     private String name;
 
-    @OneToOne(mappedBy = "gymLeader")
+    @OneToOne
+    @JoinColumn(name = "gym_id")
     @JsonIgnoreProperties
     private Gym gym;
 

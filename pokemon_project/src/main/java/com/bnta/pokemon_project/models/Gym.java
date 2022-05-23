@@ -17,24 +17,17 @@ public class Gym {
     @Column
     private String name;
 
-    @ManyToMany //todo: finish typing rest of code for this relationship & JSON
-    @JoinTable(
-            name = "gyms_trainers",
-            joinColumns = {@JoinColumn(name = "gym_id", nullable = false)},
-            inverseJoinColumns = {@JoinColumn(name = "trainer_id", nullable = false)}
-    )
+    @ManyToMany(mappedBy = "gym_badges")
     @JsonIgnoreProperties({"gyms"})
     private List<Trainer> trainers;
 
-    @OneToOne
-    @JoinColumn(name = "gym_leader_id")
+    @OneToOne(mappedBy = "gym")
     private GymLeader gymLeader;
 
 //    CONSTRUCTORS
-    public Gym(String name) {
+    public Gym(String name, List<Trainer> trainers) {
         this.name = name;
-        this.trainers = new ArrayList<>();
-
+        this.trainers = trainers;
     }
 
     public Gym () {}

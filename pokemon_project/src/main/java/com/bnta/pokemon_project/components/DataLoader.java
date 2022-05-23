@@ -38,8 +38,8 @@ public class DataLoader implements ApplicationRunner {
         trainerRepository.saveAll(Arrays.asList(trainer1, trainer2, trainer3));
 
         // Injecting Gyms into Gyms Repo
-        Gym gym1 = new Gym("Opelucid Gym");
-        Gym gym2 = new Gym("Driftveil Gym");
+        Gym gym1 = new Gym("Opelucid Gym", Arrays.asList(trainer1, trainer2));
+        Gym gym2 = new Gym("Driftveil Gym", Arrays.asList(trainer1, trainer2, trainer3));
         gymRepository.saveAll(Arrays.asList(gym1, gym2));
 
         // Injecting the GymLeaders into GymLeader Repo

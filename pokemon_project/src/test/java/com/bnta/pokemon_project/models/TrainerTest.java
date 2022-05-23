@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
+import java.util.Arrays;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
@@ -17,7 +18,7 @@ public class TrainerTest {
     public void setUp(){
         trainer = new Trainer("Bianca", LocalDate.of(1999,3,14));
         pokemon = new Pokemon("pikachu", Type.ELECTRIC,30, trainer);
-        gym_badge = new Gym("Pure Gym");
+        gym_badge = new Gym("Pure Gym", Arrays.asList(trainer));
     }
 
     @Test
