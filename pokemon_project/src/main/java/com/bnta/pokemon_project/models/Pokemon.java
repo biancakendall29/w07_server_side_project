@@ -15,11 +15,14 @@ public class Pokemon {
     private Type type; // enum
     @Column
     private int level; // 1 - 100
+    @ManyToOne
+    private Trainer trainer;
 
-    public Pokemon(String name, Type type, int level) {
+    public Pokemon(String name, Type type, int level, Trainer trainer) {
         this.name = name;
         this.type = type;
         this.level = level;
+        this.trainer = trainer;
     }
 
     public Pokemon() {}
@@ -52,6 +55,18 @@ public class Pokemon {
         this.level = level;
     }
 
+    public Trainer getTrainer() {
+        return trainer;
+    }
+
+    public void setTrainer(Trainer trainer) {
+        this.trainer = trainer;
+    }
+
+    //    public void assignTrainer(Trainer trainer) {
+//        this.trainer = trainer;
+//    }
+
     @Override
     public String toString() {
         return "Pokemon{" +
@@ -59,6 +74,7 @@ public class Pokemon {
                 ", name='" + name + '\'' +
                 ", type=" + type +
                 ", level=" + level +
+                ", trainer=" + trainer +
                 '}';
     }
 }

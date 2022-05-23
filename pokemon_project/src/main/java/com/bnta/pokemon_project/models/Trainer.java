@@ -1,15 +1,22 @@
 package com.bnta.pokemon_project.models;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-
+@Entity
+@Table(name = "trainers")
 public class Trainer {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column
     private String name;
+    @Column
     private LocalDate dob;
+    @OneToMany
     private List<Pokemon> pokemons;
     private List<Gym> gym_badges;
 
