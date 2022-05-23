@@ -15,7 +15,7 @@ public class GymLeader {
     @Column
     private String name;
 
-    @OneToOne(mappedBy = "id") //linked to the referenceColumnName (gym class)
+    @OneToOne(mappedBy = "gymLeader")
     @JsonIgnoreProperties
     private Gym gym;
 

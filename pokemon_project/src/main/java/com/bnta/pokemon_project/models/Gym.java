@@ -27,7 +27,7 @@ public class Gym {
     private List<Trainer> trainers;
 
     @OneToOne
-    @JoinColumn(name = "gym_leader_id", referencedColumnName = "id") //double check this later
+    @JoinColumn(name = "gym_leader_id")
     private GymLeader gymLeader;
 
 //    CONSTRUCTORS

@@ -18,7 +18,7 @@ public class Trainer {
     private String name;
     @Column
     private LocalDate dob;
-    @OneToMany(mappedBy = "trainer_id")
+    @OneToMany(mappedBy = "trainer")
     @JsonIgnoreProperties
     private List<Pokemon> pokemons;
     @ManyToMany(mappedBy = "trainers")
