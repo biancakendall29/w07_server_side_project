@@ -9,17 +9,20 @@ public class Trainer {
     private Long id;
     private String name;
     private LocalDate dob;
-    private List<Pokemon> pokemon;
+    private List<Pokemon> pokemons;
     private List<Gym> gym_badges;
 
+//    CONSTRUCTOR
     public Trainer(String name, LocalDate dob) {
         this.name = name;
         this.dob = dob;
-        this.pokemon = new ArrayList<>();
+        this.pokemons = new ArrayList<>();
         this.gym_badges = new ArrayList<>();
     }
 
     public Trainer() {}
+
+//    GETTERS & SETTERS
 
     public Long getId() {
         return id;
@@ -41,12 +44,12 @@ public class Trainer {
         this.dob = dob;
     }
 
-    public List<Pokemon> getPokemon() {
-        return pokemon;
+    public List<Pokemon> getPokemons() {
+        return pokemons;
     }
 
-    public void setPokemon(List<Pokemon> pokemon) {
-        this.pokemon = pokemon;
+    public void setPokemons(List<Pokemon> pokemons) {
+        this.pokemons = pokemons;
     }
 
     public List<Gym> getGym_badges() {
@@ -56,4 +59,21 @@ public class Trainer {
     public void setGym_badges(List<Gym> gym_badges) {
         this.gym_badges = gym_badges;
     }
+
+    public void addPokemon(Pokemon pokemon) {
+        this.pokemons.add(pokemon);
+    }
+
+    public void removePokemon(Pokemon pokemon){
+        this.pokemons.remove(pokemon);
+    }
+
+    public void addGym(Gym gym_badge) {
+        this.gym_badges.add(gym_badge);
+    }
+
+    public void removeGym(Gym gym_badge){
+        this.gym_badges.remove(gym_badge);
+    }
+
 }
