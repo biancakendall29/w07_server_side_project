@@ -31,8 +31,9 @@ public class GymController {
 
     // POST
     @PostMapping
-    public void createGym(@RequestBody Gym newGym) {
+    public ResponseEntity<List<Gym>> createGym(@RequestBody Gym newGym) {
         gymRepository.save(newGym);
+        return new ResponseEntity(gymRepository.findAll(), HttpStatus.CREATED);
     }
 
     // DELETE
