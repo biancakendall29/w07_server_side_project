@@ -17,6 +17,8 @@ public class Gym {
 
     @OneToMany //todo: finish typing rest of code for this relationship
     private List<Trainer> trainers;
+
+    @OneToOne
     private GymLeader gymLeader;
 
     public Gym(String name, GymLeader gymLeader) {
