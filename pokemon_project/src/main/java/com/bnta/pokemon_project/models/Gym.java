@@ -1,5 +1,7 @@
 package com.bnta.pokemon_project.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +17,13 @@ public class Gym {
     @Column
     private String name;
 
-    @OneToMany //todo: finish typing rest of code for this relationship & JSON
+    @ManyToMany //todo: finish typing rest of code for this relationship & JSON
+    @JoinTable(
+            name = "gyms_trainers",
+            joinColumns = {@JoinColumn(name = "gym_id", nullable = false)},
+            inverseJoinColumns = {@JoinColumn(name = "trainer_id", nullable = false)}
+    )
+    @JsonIgnoreProperties({"gyms"})
     private List<Trainer> trainers;
 
     @OneToOne

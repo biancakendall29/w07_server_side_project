@@ -21,7 +21,8 @@ public class Trainer {
     @OneToMany(mappedBy = "trainer_id")
     @JsonIgnoreProperties
     private List<Pokemon> pokemons;
-
+    @ManyToMany(mappedBy = "trainers")
+    @JsonIgnoreProperties({"trainers"})
     private List<Gym> gym_badges;
 
 //    CONSTRUCTOR
