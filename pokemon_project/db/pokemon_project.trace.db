@@ -4,3 +4,6 @@ SELECT * FROM gyms_trainers [42102-212]
 2022-05-23 16:06:05 jdbc[13]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "TRAINERS_GYMS" not found; SQL statement:
 SELECT * FROM trainers_gyms [42102-212]
+2022-05-23 16:21:17 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "GYM_LEADER" not found; SQL statement:
+SELECT * FROM gym_leader [42102-212]

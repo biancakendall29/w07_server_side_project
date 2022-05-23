@@ -21,12 +21,7 @@ public class Trainer {
     @OneToMany(mappedBy = "trainer")
     @JsonIgnoreProperties
     private List<Pokemon> pokemons;
-    @ManyToMany
-    @JoinTable(
-            name = "trainers_gyms",
-            joinColumns = {@JoinColumn(name = "trainer_id", nullable = false)},
-            inverseJoinColumns = {@JoinColumn(name = "gym_id", nullable = false)}
-    )
+    @ManyToMany(mappedBy = "trainers")
     @JsonIgnoreProperties({"trainers"})
     private List<Gym> gym_badges;
 

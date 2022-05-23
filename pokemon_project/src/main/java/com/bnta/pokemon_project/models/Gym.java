@@ -17,7 +17,12 @@ public class Gym {
     @Column
     private String name;
 
-    @ManyToMany(mappedBy = "gym_badges")
+    @ManyToMany
+    @JoinTable(
+            name = "trainers_gyms",
+            joinColumns = {@JoinColumn(name = "trainer_id", nullable = false)},
+            inverseJoinColumns = {@JoinColumn(name = "gym_id", nullable = false)}
+    )
     @JsonIgnoreProperties({"gyms"})
     private List<Trainer> trainers;
 
