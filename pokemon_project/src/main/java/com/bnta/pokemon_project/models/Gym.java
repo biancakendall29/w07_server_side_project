@@ -1,5 +1,6 @@
 package com.bnta.pokemon_project.models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Gym {
@@ -8,9 +9,9 @@ public class Gym {
     private List<Trainer> trainers;
     private GymLeader gymLeader;
 
-    public Gym(String name, List<Trainer> trainers, GymLeader gymLeader) {
+    public Gym(String name, GymLeader gymLeader) {
         this.name = name;
-        this.trainers = trainers;
+        this.trainers = new ArrayList<>();
         this.gymLeader = gymLeader;
     }
 
