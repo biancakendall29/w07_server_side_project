@@ -1,10 +1,19 @@
 package com.bnta.pokemon_project.models;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "pokemons")
 public class Pokemon {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column
     private String name;
+    @Column
     private Type type; // enum
+    @Column
     private int level; // 1 - 100
 
     public Pokemon(String name, Type type, int level) {
@@ -41,5 +50,15 @@ public class Pokemon {
 
     public void setLevel(int level) {
         this.level = level;
+    }
+
+    @Override
+    public String toString() {
+        return "Pokemon{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", type=" + type +
+                ", level=" + level +
+                '}';
     }
 }
