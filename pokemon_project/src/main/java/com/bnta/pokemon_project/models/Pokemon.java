@@ -16,6 +16,7 @@ public class Pokemon {
     @Column
     private int level; // 1 - 100
     @ManyToOne
+    @JoinColumn(name = "trainer_id")
     private Trainer trainer;
 
     public Pokemon(String name, Type type, int level, Trainer trainer) {

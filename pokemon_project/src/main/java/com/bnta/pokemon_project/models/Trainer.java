@@ -1,5 +1,7 @@
 package com.bnta.pokemon_project.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -16,8 +18,10 @@ public class Trainer {
     private String name;
     @Column
     private LocalDate dob;
-    @OneToMany
+    @OneToMany(mappedBy = "trainer_id")
+    @JsonIgnoreProperties
     private List<Pokemon> pokemons;
+
     private List<Gym> gym_badges;
 
 //    CONSTRUCTOR

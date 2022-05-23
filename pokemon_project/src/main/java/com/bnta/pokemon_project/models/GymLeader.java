@@ -1,5 +1,7 @@
 package com.bnta.pokemon_project.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
 @Entity
@@ -14,6 +16,7 @@ public class GymLeader {
     private String name;
 
     @OneToOne(mappedBy = "id") //linked to the referenceColumnName (gym class)
+    @JsonIgnoreProperties
     private Gym gym;
 
     public GymLeader(String name, Gym gym) {
