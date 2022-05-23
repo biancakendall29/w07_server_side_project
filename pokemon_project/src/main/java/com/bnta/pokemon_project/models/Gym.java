@@ -60,4 +60,14 @@ public class Gym {
     public void setGymLeader(GymLeader gymLeader) {
         this.gymLeader = gymLeader;
     }
+
+    @Override
+    public String toString() {
+        return "Gym{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", trainers=" + trainers +
+                ", gymLeader=" + gymLeader +
+                '}';
+    }
 }

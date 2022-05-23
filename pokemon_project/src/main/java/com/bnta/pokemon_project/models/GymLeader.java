@@ -43,5 +43,12 @@ public class GymLeader {
         this.gym = gym;
     }
 
-
+    @Override
+    public String toString() {
+        return "GymLeader{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", gym=" + gym +
+                '}';
+    }
 }
