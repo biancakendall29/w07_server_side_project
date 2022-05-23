@@ -1,11 +1,21 @@
 package com.bnta.pokemon_project.models;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table(name = "gyms")
 public class Gym {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column
     private String name;
+
+    @OneToMany //todo: finish typing rest of code for this relationship
     private List<Trainer> trainers;
     private GymLeader gymLeader;
 
