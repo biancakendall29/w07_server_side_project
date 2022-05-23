@@ -17,7 +17,7 @@ public class GymLeader {
 
     @OneToOne
     @JoinColumn(name = "gym_id")
-    @JsonIgnoreProperties
+    //@JsonIgnoreProperties
     private Gym gym;
 
     public GymLeader(String name, Gym gym) {

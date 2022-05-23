@@ -23,10 +23,11 @@ public class Gym {
             joinColumns = {@JoinColumn(name = "trainer_id", nullable = false)},
             inverseJoinColumns = {@JoinColumn(name = "gym_id", nullable = false)}
     )
-    @JsonIgnoreProperties({"gyms"})
+    @JsonIgnoreProperties({"gym_badges"})
     private List<Trainer> trainers;
 
     @OneToOne(mappedBy = "gym")
+    @JsonIgnoreProperties({"gym"})
     private GymLeader gymLeader;
 
 //    CONSTRUCTORS

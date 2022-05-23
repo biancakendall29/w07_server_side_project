@@ -19,7 +19,7 @@ public class Trainer {
     @Column
     private LocalDate dob;
     @OneToMany(mappedBy = "trainer")
-    @JsonIgnoreProperties
+    @JsonIgnoreProperties({"trainer"})
     private List<Pokemon> pokemons;
     @ManyToMany(mappedBy = "trainers")
     @JsonIgnoreProperties({"trainers"})

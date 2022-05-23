@@ -1,5 +1,7 @@
 package com.bnta.pokemon_project.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
 @Entity
@@ -17,6 +19,7 @@ public class Pokemon {
     private int level; // 1 - 100
     @ManyToOne
     @JoinColumn(name = "trainer_id")
+    //@JsonIgnoreProperties({"trainer"})
     private Trainer trainer;
 
     public Pokemon(String name, Type type, int level, Trainer trainer) {
