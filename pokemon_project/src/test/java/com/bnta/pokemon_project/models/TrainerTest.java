@@ -17,7 +17,7 @@ public class TrainerTest {
     public void setUp(){
         trainer = new Trainer("Bianca", LocalDate.of(1999,3,14));
         pokemon = new Pokemon("pikachu", Type.ELECTRIC,30, trainer);
-        gym_badge = new Gym("Pure Gym", new GymLeader("Naim", gym_badge));
+        gym_badge = new Gym("Pure Gym");
     }
 
     @Test

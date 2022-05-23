@@ -31,10 +31,10 @@ public class Gym {
     private GymLeader gymLeader;
 
 //    CONSTRUCTORS
-    public Gym(String name, GymLeader gymLeader) {
+    public Gym(String name) {
         this.name = name;
         this.trainers = new ArrayList<>();
-        this.gymLeader = gymLeader;
+
     }
 
     public Gym () {}
