@@ -32,5 +32,17 @@ public class TrainerTest {
         assertThat(trainer.getPokemons().size()).isEqualTo(0);
     }
 
+    @Test
+    public void canAddGym(){
+        trainer.addGym(gym_badge);
+        assertThat(trainer.getGym_badges().size()).isEqualTo(1);
+    }
+
+    @Test
+    public void canRemoveGym(){
+        trainer.removeGym(gym_badge);
+        assertThat(trainer.getGym_badges().size()).isEqualTo(0);
+    }
+
 
 }
