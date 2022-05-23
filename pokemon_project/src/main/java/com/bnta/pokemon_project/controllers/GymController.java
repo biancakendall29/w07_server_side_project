@@ -40,7 +40,7 @@ public class GymController {
     public ResponseEntity<List<Gym>> deleteGym(@PathVariable Long id) {
         var found = gymRepository.findById(id);
         gymRepository.deleteById(id);
-        return new ResponseEntity(gymRepository.findAll(), found.isEmpty() ? HttpStatus.NOT_FOUND : HttpStatus.OK)
+        return new ResponseEntity(gymRepository.findAll(), found.isEmpty() ? HttpStatus.NOT_FOUND : HttpStatus.OK);
     }
 
 }
