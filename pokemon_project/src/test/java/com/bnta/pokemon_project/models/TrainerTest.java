@@ -26,4 +26,11 @@ public class TrainerTest {
         assertThat(trainer.getPokemons().size()).isEqualTo(1);
     }
 
+    @Test
+    public void canRemovePokemon(){
+        trainer.removePokemon(pokemon);
+        assertThat(trainer.getPokemons().size()).isEqualTo(0);
+    }
+
+
 }
