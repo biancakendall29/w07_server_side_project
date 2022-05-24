@@ -52,6 +52,10 @@ public class DataLoader implements ApplicationRunner {
         // Injecting the GymLeaders into GymLeader Repo
         GymLeader gymLeader1 = new GymLeader("Iris", gym1);
         GymLeader gymLeader2 = new GymLeader("Clay", gym2);
+        GymLeader gymLeader3 = new GymLeader("Clay", gym2);
+        GymLeader gymLeader4 = new GymLeader("Clay", gym2);
+        GymLeader gymLeader5 = new GymLeader("Clay", gym2);
+        GymLeader gymLeader6 = new GymLeader("Clay", gym2);
         gymLeaderRepository.saveAll(Arrays.asList(gymLeader1, gymLeader2));
 
         // Injecting the Pokémon into the Pokémon Repo
