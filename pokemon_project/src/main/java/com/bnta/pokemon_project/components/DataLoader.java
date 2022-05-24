@@ -63,7 +63,7 @@ public class DataLoader implements ApplicationRunner {
         Pokemon pokemon2 = new Pokemon("Torkoal", Type.FIRE, 10, Arrays.asList(trainer4, trainer3));
         Pokemon pokemon3 = new Pokemon("Treeko", Type.GRASS, 41, Arrays.asList(trainer1, trainer2));
         Pokemon pokemon4 = new Pokemon("Krabby", Type.WATER, 25, Arrays.asList(trainer2));
-        Pokemon pokemon5 = new Pokemon("Squirtel", Type.WATER, 78, Arrays.asList(trainer2, trainer6, trainer5));
+        Pokemon pokemon5 = new Pokemon("Squirtle", Type.WATER, 78, Arrays.asList(trainer2, trainer6, trainer5));
         Pokemon pokemon6 = new Pokemon("Chimchar", Type.FIRE, 97, Arrays.asList(trainer2, trainer4, trainer5, trainer6));
         Pokemon pokemon7 = new Pokemon("Klinglang", Type.STEEL, 53, Arrays.asList(trainer3, trainer1));
         Pokemon pokemon8 = new Pokemon("Alakazam", Type.PSYCHIC, 21, Arrays.asList(trainer3, trainer2, trainer4, trainer5));
