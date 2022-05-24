@@ -1,6 +1,9 @@
 package com.bnta.pokemon_project.controllers;
 
 import com.bnta.pokemon_project.models.Gym;
+import com.bnta.pokemon_project.models.Pokemon;
+import com.bnta.pokemon_project.models.Trainer;
+import com.bnta.pokemon_project.repositories.GymLeaderRepository;
 import com.bnta.pokemon_project.repositories.GymRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,6 +18,8 @@ public class GymController {
 
     @Autowired
     private GymRepository gymRepository;
+    @Autowired
+    private GymLeaderRepository gymLeaderRepository;
 
     // INDEX
     @GetMapping
@@ -42,6 +47,20 @@ public class GymController {
         var found = gymRepository.findById(id);
         gymRepository.deleteById(id);
         return new ResponseEntity(gymRepository.findAll(), found.isEmpty() ? HttpStatus.NOT_FOUND : HttpStatus.OK);
+    }
+
+    // CHANGE: CHANGE GYM LEADER
+    @PutMapping("/changeLeader/{id_gym}/{id_leader}")
+    public ResponseEntity<Gym> changeLeaderInGym(@PathVariable("id_gym") Long id_gym, @PathVariable("id_leader") Long id_leader) {
+        var found = gymRepository.findById(id_gym);
+        Gym gymChange = found.get();
+        gymChange.setGymLeader(
+                gymLeaderRepository.findAll()
+                         .stream()
+                        .filter(pok -> pok.getId() == id_leader)
+                        .findAny().get()
+        );
+        return new ResponseEntity(gymRepository.findById(id_gym).get(), found.isEmpty() ? HttpStatus.NOT_FOUND : HttpStatus.ACCEPTED);
     }
 
 }
