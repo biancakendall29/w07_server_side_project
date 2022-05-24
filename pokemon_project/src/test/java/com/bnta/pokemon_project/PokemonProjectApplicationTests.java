@@ -1,13 +1,9 @@
 package com.bnta.pokemon_project;
 
-import com.bnta.pokemon_project.models.Pokemon;
-import com.bnta.pokemon_project.models.Trainer;
-import com.bnta.pokemon_project.repositories.PokemonRepository;
-import com.bnta.pokemon_project.repositories.TrainerRepository;
+import com.bnta.pokemon_project.models.*;
+import com.bnta.pokemon_project.repositories.*;
 
-import com.bnta.pokemon_project.models.Gym;
 import com.bnta.pokemon_project.models.Pokemon;
-import com.bnta.pokemon_project.repositories.GymRepository;
 import com.bnta.pokemon_project.repositories.PokemonRepository;
 
 import org.junit.jupiter.api.Test;
@@ -25,15 +21,15 @@ class PokemonProjectApplicationTests {
 	PokemonRepository pokemonRepository;
 	@Autowired
 	TrainerRepository trainerRepository;
-
-//	Amber's DQ testing
+	@Autowired
+	GymLeaderRepository gymLeaderRepository;
 	@Autowired
 	GymRepository gymRepository;
 
 	@Test
 	void contextLoads() {
 	}
-
+//	Bianca's DQ testing
 	@Test
 	public void canFindPokemonsWithLevelBetween() {
 		List<Pokemon> found = pokemonRepository.findByLevelBetween(50, 80);
@@ -48,13 +44,14 @@ class PokemonProjectApplicationTests {
 	}
 //	todo: need to add more gyms as there is not much to test on
 
-	@Test
-	public void canFindWaterTypeInPokemon(){
-		List<Pokemon> found = pokemonRepository.findPokemonByType("water");
-		assertThat(found.size()).isEqualTo(2);
-	} // is an enum extra steps must be added to the main code
+//	@Test
+//	public void canFindWaterTypeInPokemon(){
+//		List<Pokemon> found = pokemonRepository.findPokemonByType("water");
+//		assertThat(found.size()).isEqualTo(2);
+//	}
+	// is an enum extra steps must be added to the main code
 
-
+//	Bianca's DT testing
 	@Test
 	public void canFindTrainersWithNameStartingWith() {
 		List<Trainer> found = trainerRepository.findByNameStartingWith("B");
@@ -66,4 +63,19 @@ class PokemonProjectApplicationTests {
 		Integer found = trainerRepository.countByNameContaining("a");
 		assertThat(found).isEqualTo(3);
 	}
+
+//	Naim's DQ testing
+	@Test
+	public void canFindLeaderName () {
+	List<GymLeader> found = gymLeaderRepository.findByNameContainingIgnoreCase("clay");
+	assertThat(found.size()).isEqualTo(1);
+	}
+
+	// NA DQ4 - FindByNameThatContains - Double Check This
+	@Test
+	public void canFindNameContaining (){
+		List<GymLeader> found = gymLeaderRepository.findByNameContainingIgnoreCase("cl");
+		assertThat(found.size()).isEqualTo(1);
+	}
+
 }
