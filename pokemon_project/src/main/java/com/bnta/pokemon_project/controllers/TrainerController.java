@@ -1,8 +1,10 @@
 package com.bnta.pokemon_project.controllers;
 
 import com.bnta.pokemon_project.models.Gym;
+import com.bnta.pokemon_project.models.Pokemon;
 import com.bnta.pokemon_project.models.Trainer;
 import com.bnta.pokemon_project.repositories.GymRepository;
+import com.bnta.pokemon_project.repositories.PokemonRepository;
 import com.bnta.pokemon_project.repositories.TrainerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,6 +19,8 @@ public class TrainerController {
 
     @Autowired
     private TrainerRepository trainerRepository;
+    @Autowired
+    private PokemonRepository pokemonRepository;
 
     // INDEX
     @GetMapping
@@ -44,5 +48,18 @@ public class TrainerController {
         var found = trainerRepository.findById(id);
         trainerRepository.deleteById(id);
         return new ResponseEntity(trainerRepository.findAll(), found.isEmpty() ? HttpStatus.NOT_FOUND : HttpStatus.OK);
+    }
+
+    // CHANGE
+    @PutMapping("/change/{id}")
+    public Trainer changePokemonInTrainer(@PathVariable Long id) {
+        var found = trainerRepository.findById(id);
+        Trainer trainerChange = found.get();
+        trainerChange.removePokemon(
+                pokemonRepository.findAll()
+                        .stream()
+                        .
+                )
+
     }
 }
