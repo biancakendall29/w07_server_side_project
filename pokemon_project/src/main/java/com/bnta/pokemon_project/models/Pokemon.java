@@ -21,6 +21,7 @@ public class Pokemon {
     @JoinColumn(name = "trainer_id")
     //@JsonIgnoreProperties({"trainer"})
     private Trainer trainer;
+    //need to add code for enum in this class for derived query
 
 //    CONSTRUCTORS
     public Pokemon(String name, Type type, int level, Trainer trainer) {
