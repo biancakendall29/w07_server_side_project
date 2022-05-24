@@ -1,7 +1,9 @@
 package com.bnta.pokemon_project;
 
 import com.bnta.pokemon_project.models.Gym;
+import com.bnta.pokemon_project.models.Pokemon;
 import com.bnta.pokemon_project.repositories.GymRepository;
+import com.bnta.pokemon_project.repositories.PokemonRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -17,6 +19,9 @@ class PokemonProjectApplicationTests {
 	@Autowired
 	GymRepository gymRepository;
 
+	@Autowired
+	PokemonRepository pokemonRepository;
+
 	@Test
 	void contextLoads() {
 	}
@@ -30,6 +35,10 @@ class PokemonProjectApplicationTests {
 //	todo: need to add more gyms as there is not much to test on
 
 	@Test
+	public void canFindWaterTypeInPokemon(){
+		List<Pokemon> found = pokemonRepository.findPokemonByType("water");
+		assertThat(found.size()).isEqualTo(2);
+	} // is an enum extra steps must be added to the main code
 
 
 }
