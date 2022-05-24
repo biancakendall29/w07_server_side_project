@@ -65,7 +65,7 @@ public class TrainerController {
     }
 
     // CHANGE: ADD POKEMON
-    @PutMapping("/remove/{id_trainer}/{id_pokemon}")
+    @PutMapping("/add/{id_trainer}/{id_pokemon}")
     public ResponseEntity<Trainer> addPokemonInTrainer(@PathVariable("id_trainer") Long id_trainer, @PathVariable("id_pokemon") Long id_pokemon) {
         var found = trainerRepository.findById(id_trainer);
         Trainer trainerChange = found.get();
