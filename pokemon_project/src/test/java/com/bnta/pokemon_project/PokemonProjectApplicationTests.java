@@ -29,5 +29,7 @@ class PokemonProjectApplicationTests {
 	}
 //	todo: need to add more gyms as there is not much to test on
 
+	@Test
+
 
 }
