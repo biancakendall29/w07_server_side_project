@@ -48,7 +48,7 @@ public class PokemonController {
     }
 
     // CHANGE: ADD POKEMON
-    @PutMapping("/change/{id}/{level}")
+    @PutMapping("/changeLevel/{id}/{level}")
     public ResponseEntity<Pokemon> changeLevelinPokemon(@PathVariable("id") Long id, @PathVariable("level") int level) {
         var found = pokemonRepository.findById(id);
         Pokemon pokemonChange = found.get();

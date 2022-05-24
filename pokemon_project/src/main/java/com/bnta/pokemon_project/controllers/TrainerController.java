@@ -53,7 +53,7 @@ public class TrainerController {
     }
 
     // CHANGE: REMOVE POKEMON
-    @PutMapping("/remove/{id_trainer}/{id_pokemon}")
+    @PutMapping("/removePokemon/{id_trainer}/{id_pokemon}")
     public ResponseEntity<Trainer> removePokemonInTrainer(@PathVariable("id_trainer") Long id_trainer, @PathVariable("id_pokemon") Long id_pokemon) {
         var found = trainerRepository.findById(id_trainer);
         Trainer trainerChange = found.get();
@@ -67,10 +67,13 @@ public class TrainerController {
     }
 
     // CHANGE: ADD POKEMON
-    @PutMapping("/add/{id_trainer}/{id_pokemon}")
+    @PutMapping("/addPokemon/{id_trainer}/{id_pokemon}")
     public ResponseEntity<Trainer> addPokemonInTrainer(@PathVariable("id_trainer") Long id_trainer, @PathVariable("id_pokemon") Long id_pokemon) {
         var found = trainerRepository.findById(id_trainer);
         Trainer trainerChange = found.get();
+        if (trainerChange.getPokemons().stream().filter(pok -> pok.getId() == id_pokemon).findAny().isPresent()) {
+            return new ResponseEntity(trainerRepository.findById(id_trainer).get(), HttpStatus.ALREADY_REPORTED);
+        }
         trainerChange.addPokemon(
                 pokemonRepository.findAll()
                         .stream()
@@ -81,7 +84,7 @@ public class TrainerController {
     }
 
     // CHANGE: REMOVE GYM BADGE
-    @PutMapping("/remove/{id_trainer}/{id_gym}")
+    @PutMapping("/removeGym/{id_trainer}/{id_gym}")
     public ResponseEntity<Trainer> removeGymInTrainer(@PathVariable("id_trainer") Long id_trainer, @PathVariable("id_gym") Long id_gym) {
         var found = trainerRepository.findById(id_trainer);
         Trainer trainerChange = found.get();
@@ -95,7 +98,7 @@ public class TrainerController {
     }
 
     // CHANGE: ADD GYM BADGE
-    @PutMapping("/add/{id_trainer}/{id_gym}")
+    @PutMapping("/addGym/{id_trainer}/{id_gym}")
     public ResponseEntity<Trainer> addGymInTrainer(@PathVariable("id_trainer") Long id_trainer, @PathVariable("id_gym") Long id_gym) {
         var found = trainerRepository.findById(id_trainer);
         Trainer trainerChange = found.get();
