@@ -59,16 +59,16 @@ public class DataLoader implements ApplicationRunner {
         gymLeaderRepository.saveAll(Arrays.asList(gymLeader1, gymLeader2));
 
         // Injecting the Pokémon into the Pokémon Repo
-        Pokemon pokemon1 = new Pokemon("Machamp", Type.FIGHTING, 50, trainer1);
-        Pokemon pokemon2 = new Pokemon("Torkoal", Type.FIRE, 10, trainer1);
-        Pokemon pokemon3 = new Pokemon("Treeko", Type.GRASS, 41, trainer1);
-        Pokemon pokemon4 = new Pokemon("Krabby", Type.WATER, 25, trainer2);
-        Pokemon pokemon5 = new Pokemon("Squirrel", Type.WATER, 78, trainer2);
-        Pokemon pokemon6 = new Pokemon("Chimchar", Type.FIRE, 97, trainer2);
-        Pokemon pokemon7 = new Pokemon("Klinglang", Type.STEEL, 53, trainer3);
-        Pokemon pokemon8 = new Pokemon("Alakazam", Type.PSYCHIC, 21, trainer3);
-        Pokemon pokemon9 = new Pokemon("Cinccino", Type.NORMAL, 15, trainer3);
-        Pokemon pokemon10 = new Pokemon("Bulbasaur", Type.GRASS, 46, trainer3);
+        Pokemon pokemon1 = new Pokemon("Machamp", Type.FIGHTING, 50, Arrays.asList(trainer1, trainer5, trainer6));
+        Pokemon pokemon2 = new Pokemon("Torkoal", Type.FIRE, 10, Arrays.asList(trainer1));
+        Pokemon pokemon3 = new Pokemon("Treeko", Type.GRASS, 41, Arrays.asList(trainer1));
+        Pokemon pokemon4 = new Pokemon("Krabby", Type.WATER, 25, Arrays.asList(trainer2));
+        Pokemon pokemon5 = new Pokemon("Squirrel", Type.WATER, 78, Arrays.asList(trainer2));
+        Pokemon pokemon6 = new Pokemon("Chimchar", Type.FIRE, 97, Arrays.asList(trainer2));
+        Pokemon pokemon7 = new Pokemon("Klinglang", Type.STEEL, 53, Arrays.asList(trainer3));
+        Pokemon pokemon8 = new Pokemon("Alakazam", Type.PSYCHIC, 21, Arrays.asList(trainer3));
+        Pokemon pokemon9 = new Pokemon("Cinccino", Type.NORMAL, 15, Arrays.asList(trainer3));
+        Pokemon pokemon10 = new Pokemon("Bulbasaur", Type.GRASS, 46, Arrays.asList(trainer3));
         pokemonRepository.saveAll(Arrays.asList(pokemon1,pokemon2,pokemon3,pokemon4,pokemon5,pokemon6,pokemon7,pokemon8,pokemon9,pokemon10));
     }
 
