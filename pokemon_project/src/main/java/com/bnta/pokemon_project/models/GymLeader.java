@@ -19,12 +19,15 @@ public class GymLeader {
     @JoinColumn(name = "gym_id")
     private Gym gym;
 
+    //    CONSTRUCTORS
     public GymLeader(String name, Gym gym) {
         this.name = name;
         this.gym = gym;
     }
 
     public GymLeader () {}
+
+//    GETTERS & SETTERS
 
     public Long getId() {
         return id;
