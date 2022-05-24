@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("pokemons")
+@RequestMapping(value = "/pokemons", method = {RequestMethod.GET, RequestMethod.PUT})
 public class PokemonController {
 
     @Autowired
@@ -57,14 +57,14 @@ public class PokemonController {
         return new ResponseEntity(pokemonRepository.findById(id).get(), found.isEmpty() ? HttpStatus.NOT_FOUND : HttpStatus.ACCEPTED);
     }
 
-    // CHANGE: ADD ADDITIONAL TYPES
-    //TODO: need to change type property in pokemon class to be a list
-    @PutMapping("/addType/{id}/{type}")
-    public ResponseEntity<Pokemon> addTypeToPokemon(@PathVariable("id") Long id, @PathVariable("type") Type type) {
-        var found = pokemonRepository.findById(id);
-        Pokemon pokemonChange = found.get();
-        pokemonChange.addType(type);
-        return new ResponseEntity(pokemonRepository.findById(id).get(), found.isEmpty() ? HttpStatus.NOT_FOUND : HttpStatus.OK);
-    }
+//    // CHANGE: ADD ADDITIONAL TYPES
+//    //TODO: need to change type property in pokemon class to be a list
+//    @PutMapping("/addType/{id}/{type}")
+//    public ResponseEntity<Pokemon> addTypeToPokemon(@PathVariable("id") Long id, @PathVariable("type") Type type) {
+//        var found = pokemonRepository.findById(id);
+//        Pokemon pokemonChange = found.get();
+//        pokemonChange.addType(type);
+//        return new ResponseEntity(pokemonRepository.findById(id).get(), found.isEmpty() ? HttpStatus.NOT_FOUND : HttpStatus.OK);
+//    }
 
 }
