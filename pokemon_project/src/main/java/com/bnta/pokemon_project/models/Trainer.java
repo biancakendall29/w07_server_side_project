@@ -90,4 +90,5 @@ public class Trainer {
         this.gym_badges.remove(gym_badge);
     }
 
+
 }

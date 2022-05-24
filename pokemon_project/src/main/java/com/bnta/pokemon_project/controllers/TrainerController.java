@@ -25,27 +25,27 @@ public class TrainerController {
     private GymRepository gymRepository;
 
     // INDEX
-    @GetMapping
+    @GetMapping("/get")
     public ResponseEntity<List<Trainer>> getTrainer() {
         return new ResponseEntity(trainerRepository.findAll(), HttpStatus.OK);
     }
 
     // SHOW
-    @GetMapping("/{id}")
+    @GetMapping("/show/{id}")
     public ResponseEntity<Trainer> getTrainer(@PathVariable Long id) {
         var found = trainerRepository.findById(id);
         return new ResponseEntity(trainerRepository.findById(id), found.isEmpty() ? HttpStatus.NOT_FOUND : HttpStatus.OK);
     }
 
     // POST
-    @PostMapping
+    @PostMapping("/post")
     public ResponseEntity<List<Trainer>> createTrainer(@RequestBody Trainer newTrainer) {
         trainerRepository.save(newTrainer);
         return new ResponseEntity(trainerRepository.findAll(), HttpStatus.CREATED);
     }
 
     // DELETE
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<List<Trainer>> deleteTrainer(@PathVariable Long id) {
         var found = trainerRepository.findById(id);
         trainerRepository.deleteById(id);
@@ -80,7 +80,10 @@ public class TrainerController {
                         .filter(pok -> pok.getId() == id_pokemon)
                         .findAny().get()
         );
-        return new ResponseEntity(trainerRepository.findById(id_trainer).get(), found.isEmpty() ? HttpStatus.NOT_FOUND : HttpStatus.OK);
+        //trainerRepository.deleteById(id_trainer);
+        //TODO: save added pokemon
+        trainerRepository.save(trainerChange);
+        return new ResponseEntity(trainerChange, found.isEmpty() ? HttpStatus.NOT_FOUND : HttpStatus.OK);
     }
 
     // CHANGE: REMOVE GYM BADGE

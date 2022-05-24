@@ -21,27 +21,27 @@ public class PokemonController {
     private PokemonRepository pokemonRepository;
 
     // INDEX
-    @GetMapping
+    @GetMapping("/get")
     public ResponseEntity<List<Pokemon>> getPokemons() {
         return new ResponseEntity(pokemonRepository.findAll(), HttpStatus.OK);
     }
 
     // SHOW
-    @GetMapping("/{id}")
+    @GetMapping("/show/{id}")
     public ResponseEntity<Pokemon> getPokemon(@PathVariable Long id) {
         var found = pokemonRepository.findById(id);
         return new ResponseEntity(pokemonRepository.findById(id), found.isEmpty() ? HttpStatus.NOT_FOUND : HttpStatus.OK);
     }
 
     // POST
-    @PostMapping
+    @PostMapping("/post")
     public ResponseEntity<List<Pokemon>> createPokemon(@RequestBody Pokemon newPokemon) {
         pokemonRepository.save(newPokemon);
         return new ResponseEntity(pokemonRepository.findAll(), HttpStatus.CREATED);
     }
 
     // DELETE
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<List<Pokemon>> deletePokemon(@PathVariable Long id) {
         var found = pokemonRepository.findById(id);
         pokemonRepository.deleteById(id);
