@@ -102,6 +102,9 @@ public class TrainerController {
     public ResponseEntity<Trainer> addGymInTrainer(@PathVariable("id_trainer") Long id_trainer, @PathVariable("id_gym") Long id_gym) {
         var found = trainerRepository.findById(id_trainer);
         Trainer trainerChange = found.get();
+        if (trainerChange.getPokemons().stream().filter(pok -> pok.getId() == id_gym).findAny().isPresent()) {
+            return new ResponseEntity(trainerRepository.findById(id_trainer).get(), HttpStatus.ALREADY_REPORTED);
+        }
         trainerChange.addGym(
                 gymRepository.findAll()
                         .stream()
