@@ -51,15 +51,16 @@ public class TrainerController {
     }
 
     // CHANGE
-    @PutMapping("/change/{id}")
-    public Trainer changePokemonInTrainer(@PathVariable Long id) {
-        var found = trainerRepository.findById(id);
+    @PutMapping("/change/{id_trainer}/{id_pokemon_old}")
+    public Trainer changePokemonInTrainer(@PathVariable Long id_trainer, @PathVariable Long id_pokemon) {
+        var found = trainerRepository.findById(id_trainer);
         Trainer trainerChange = found.get();
         trainerChange.removePokemon(
                 pokemonRepository.findAll()
                         .stream()
-                        .
-                )
-
+                        .filter(pok -> pok.getId() == id_pokemon)
+                        .findAny().get()
+                );
+        return trainerRepository.findById(id_trainer).get();
     }
 }
