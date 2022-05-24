@@ -52,23 +52,23 @@ public class DataLoader implements ApplicationRunner {
         // Injecting the GymLeaders into GymLeader Repo
         GymLeader gymLeader1 = new GymLeader("Iris", gym1);
         GymLeader gymLeader2 = new GymLeader("Clay", gym2);
-        GymLeader gymLeader3 = new GymLeader("Clay", gym2);
-        GymLeader gymLeader4 = new GymLeader("Clay", gym2);
-        GymLeader gymLeader5 = new GymLeader("Clay", gym2);
-        GymLeader gymLeader6 = new GymLeader("Clay", gym2);
-        gymLeaderRepository.saveAll(Arrays.asList(gymLeader1, gymLeader2));
+        GymLeader gymLeader3 = new GymLeader("Bianca", gym3);
+        GymLeader gymLeader4 = new GymLeader("Naim", gym4);
+        GymLeader gymLeader5 = new GymLeader("Cece", gym5);
+        GymLeader gymLeader6 = new GymLeader("Chris", gym6);
+        gymLeaderRepository.saveAll(Arrays.asList(gymLeader1, gymLeader2, gymLeader3, gymLeader4, gymLeader5, gymLeader6));
 
         // Injecting the Pokémon into the Pokémon Repo
         Pokemon pokemon1 = new Pokemon("Machamp", Type.FIGHTING, 50, Arrays.asList(trainer1, trainer5, trainer6));
-        Pokemon pokemon2 = new Pokemon("Torkoal", Type.FIRE, 10, Arrays.asList(trainer1));
-        Pokemon pokemon3 = new Pokemon("Treeko", Type.GRASS, 41, Arrays.asList(trainer1));
+        Pokemon pokemon2 = new Pokemon("Torkoal", Type.FIRE, 10, Arrays.asList(trainer4, trainer3));
+        Pokemon pokemon3 = new Pokemon("Treeko", Type.GRASS, 41, Arrays.asList(trainer1, trainer2));
         Pokemon pokemon4 = new Pokemon("Krabby", Type.WATER, 25, Arrays.asList(trainer2));
-        Pokemon pokemon5 = new Pokemon("Squirrel", Type.WATER, 78, Arrays.asList(trainer2));
-        Pokemon pokemon6 = new Pokemon("Chimchar", Type.FIRE, 97, Arrays.asList(trainer2));
-        Pokemon pokemon7 = new Pokemon("Klinglang", Type.STEEL, 53, Arrays.asList(trainer3));
-        Pokemon pokemon8 = new Pokemon("Alakazam", Type.PSYCHIC, 21, Arrays.asList(trainer3));
-        Pokemon pokemon9 = new Pokemon("Cinccino", Type.NORMAL, 15, Arrays.asList(trainer3));
-        Pokemon pokemon10 = new Pokemon("Bulbasaur", Type.GRASS, 46, Arrays.asList(trainer3));
+        Pokemon pokemon5 = new Pokemon("Squirtel", Type.WATER, 78, Arrays.asList(trainer2, trainer6, trainer5));
+        Pokemon pokemon6 = new Pokemon("Chimchar", Type.FIRE, 97, Arrays.asList(trainer2, trainer4, trainer5, trainer6));
+        Pokemon pokemon7 = new Pokemon("Klinglang", Type.STEEL, 53, Arrays.asList(trainer3, trainer1));
+        Pokemon pokemon8 = new Pokemon("Alakazam", Type.PSYCHIC, 21, Arrays.asList(trainer3, trainer2, trainer4, trainer5));
+        Pokemon pokemon9 = new Pokemon("Cinccino", Type.NORMAL, 15, Arrays.asList(trainer3, trainer4));
+        Pokemon pokemon10 = new Pokemon("Bulbasaur", Type.GRASS, 46, Arrays.asList(trainer3, trainer6, trainer5));
         pokemonRepository.saveAll(Arrays.asList(pokemon1,pokemon2,pokemon3,pokemon4,pokemon5,pokemon6,pokemon7,pokemon8,pokemon9,pokemon10));
     }
 
