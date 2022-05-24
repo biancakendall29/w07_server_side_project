@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("gyms")
+@RequestMapping(value = "gyms", method = {RequestMethod.GET, RequestMethod.PUT})
 public class GymController {
 
     @Autowired
@@ -22,27 +22,27 @@ public class GymController {
     private GymLeaderRepository gymLeaderRepository;
 
     // INDEX
-    @GetMapping
+    @GetMapping("/get")
     public ResponseEntity<List<Gym>> getGyms() {
         return new ResponseEntity(gymRepository.findAll(), HttpStatus.OK);
     }
 
     // SHOW
-    @GetMapping("/{id}")
+    @GetMapping("/show/{id}")
     public ResponseEntity<Gym> getGym(@PathVariable Long id) {
         var found = gymRepository.findById(id);
         return new ResponseEntity(gymRepository.findById(id), found.isEmpty() ? HttpStatus.NOT_FOUND : HttpStatus.OK);
     }
 
     // POST
-    @PostMapping
+    @PostMapping("/post")
     public ResponseEntity<List<Gym>> createGym(@RequestBody Gym newGym) {
         gymRepository.save(newGym);
         return new ResponseEntity(gymRepository.findAll(), HttpStatus.CREATED);
     }
 
     // DELETE
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<List<Gym>> deleteGym(@PathVariable Long id) {
         var found = gymRepository.findById(id);
         gymRepository.deleteById(id);
