@@ -3,6 +3,7 @@ package com.bnta.pokemon_project.repositories;
 import com.bnta.pokemon_project.models.Trainer;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public interface TrainerRepository extends JpaRepository <Trainer, Long> {
@@ -24,7 +25,7 @@ public interface TrainerRepository extends JpaRepository <Trainer, Long> {
 
     List<Trainer> findByNameStartingWith(String prefix);
 
-    //List<Trainer> findBySizeOfPokemonsArrayGreaterThan(Integer size);
+    Integer countByNameContaining(String letter);
 
 
     //

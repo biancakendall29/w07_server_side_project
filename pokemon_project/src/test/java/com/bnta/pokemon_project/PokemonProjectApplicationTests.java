@@ -36,9 +36,9 @@ class PokemonProjectApplicationTests {
 		assertThat(found.size()).isEqualTo(1);
 	}
 
-//	@Test
-//	public void canFindTrainersBySizeOfPokemonList() {
-//		List<Trainer> found = trainerRepository.findBySizeOfPokemonsArrayGreaterThan(3);
-//		assertThat(found.size()).isEqualTo(1);
-//	}
+	@Test
+	public void canFindTrainersBySizeOfPokemonList() {
+		Integer found = trainerRepository.countByNameContaining("a");
+		assertThat(found).isEqualTo(3);
+	}
 }
