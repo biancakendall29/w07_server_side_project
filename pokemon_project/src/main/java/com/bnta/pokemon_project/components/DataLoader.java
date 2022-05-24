@@ -32,15 +32,22 @@ public class DataLoader implements ApplicationRunner {
     public void run(ApplicationArguments args) throws Exception {
 
         // Injecting Trainers into Trainer Repo
-        Trainer trainer1 = new Trainer("Barry", LocalDate.of(2000,01,01));
-        Trainer trainer2 = new Trainer("Lucas", LocalDate.of(1998,05,06));
-        Trainer trainer3 = new Trainer("Chase", LocalDate.of(2010,12,30));
-        trainerRepository.saveAll(Arrays.asList(trainer1, trainer2, trainer3));
+        Trainer trainer1 = new Trainer("Barry", LocalDate.of(2000,1,1));
+        Trainer trainer2 = new Trainer("Lucas", LocalDate.of(1998,5,6));
+        Trainer trainer3 = new Trainer("Chase", LocalDate.of(2010,2,30));
+        Trainer trainer4 = new Trainer("Ash", LocalDate.of(1979,12,28));
+        Trainer trainer5 = new Trainer("Brock", LocalDate.of(1992,10,10));
+        Trainer trainer6 = new Trainer("Clemont", LocalDate.of(2009,9,13));
+        trainerRepository.saveAll(Arrays.asList(trainer1, trainer2, trainer3, trainer4, trainer5, trainer6));
 
         // Injecting Gyms into Gyms Repo
-        Gym gym1 = new Gym("Opelucid Gym", Arrays.asList(trainer1, trainer2));
+        Gym gym1 = new Gym("Opelucid Gym", Arrays.asList(trainer1, trainer5));
         Gym gym2 = new Gym("Driftveil Gym", Arrays.asList(trainer1, trainer2, trainer3));
-        gymRepository.saveAll(Arrays.asList(gym1, gym2));
+        Gym gym3 = new Gym("Snowpoint Gym", Arrays.asList(trainer1, trainer2, trainer4));
+        Gym gym4 = new Gym("Sunnyshore Gym", Arrays.asList(trainer1, trainer2, trainer3));
+        Gym gym5 = new Gym("Mossdeep Gym", Arrays.asList(trainer1, trainer4, trainer5, trainer6));
+        Gym gym6 = new Gym("Striaton Gym", Arrays.asList(trainer1, trainer2, trainer3, trainer4, trainer5, trainer6));
+        gymRepository.saveAll(Arrays.asList(gym1, gym2, gym3, gym4, gym5, gym6));
 
         // Injecting the GymLeaders into GymLeader Repo
         GymLeader gymLeader1 = new GymLeader("Iris", gym1);
