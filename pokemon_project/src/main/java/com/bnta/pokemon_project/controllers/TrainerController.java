@@ -50,9 +50,9 @@ public class TrainerController {
         return new ResponseEntity(trainerRepository.findAll(), found.isEmpty() ? HttpStatus.NOT_FOUND : HttpStatus.OK);
     }
 
-    // CHANGE
-    @PutMapping("/change/{id_trainer}/{id_pokemon_old}")
-    public Trainer changePokemonInTrainer(@PathVariable Long id_trainer, @PathVariable Long id_pokemon) {
+    // CHANGE: REMOVE POKEMON
+    @PutMapping("/remove/{id_trainer}/{id_pokemon}")
+    public ResponseEntity<Trainer> removePokemonInTrainer(@PathVariable("id_trainer") Long id_trainer, @PathVariable("id_pokemon") Long id_pokemon) {
         var found = trainerRepository.findById(id_trainer);
         Trainer trainerChange = found.get();
         trainerChange.removePokemon(
@@ -61,6 +61,21 @@ public class TrainerController {
                         .filter(pok -> pok.getId() == id_pokemon)
                         .findAny().get()
                 );
-        return trainerRepository.findById(id_trainer).get();
+        return new ResponseEntity(trainerRepository.findById(id_trainer).get(), found.isEmpty() ? HttpStatus.NOT_FOUND : HttpStatus.OK);
     }
+
+    // CHANGE: ADD POKEMON
+    @PutMapping("/remove/{id_trainer}/{id_pokemon}")
+    public ResponseEntity<Trainer> addPokemonInTrainer(@PathVariable("id_trainer") Long id_trainer, @PathVariable("id_pokemon") Long id_pokemon) {
+        var found = trainerRepository.findById(id_trainer);
+        Trainer trainerChange = found.get();
+        trainerChange.addPokemon(
+                pokemonRepository.findAll()
+                        .stream()
+                        .filter(pok -> pok.getId() == id_pokemon)
+                        .findAny().get()
+        );
+        return new ResponseEntity(trainerRepository.findById(id_trainer).get(), found.isEmpty() ? HttpStatus.NOT_FOUND : HttpStatus.OK);
+    }
+
 }
