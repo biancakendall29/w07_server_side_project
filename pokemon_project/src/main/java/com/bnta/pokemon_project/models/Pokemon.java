@@ -22,6 +22,7 @@ public class Pokemon {
     //@JsonIgnoreProperties({"trainer"})
     private Trainer trainer;
 
+//    CONSTRUCTORS
     public Pokemon(String name, Type type, int level, Trainer trainer) {
         this.name = name;
         this.type = type;
@@ -31,6 +32,7 @@ public class Pokemon {
 
     public Pokemon() {}
 
+//GETTERS & SETTERS
     public Long getId() {
         return id;
     }
