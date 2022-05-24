@@ -50,7 +50,12 @@ class PokemonProjectApplicationTests {
 	}
 //	todo: need to add more gyms as there is not much to test on
 
-//	@Test
+	@Test
+	public void canIgnorePokemon(){
+		List<Pokemon> found = pokemonRepository.findByNameNot("Squirtle");
+	}
+
+	//	@Test
 //	public void canFindWaterTypeInPokemon(){
 //		List<Pokemon> found = pokemonRepository.findPokemonByType("water");
 //		assertThat(found.size()).isEqualTo(2);

@@ -9,6 +9,8 @@ public interface PokemonRepository extends JpaRepository <Pokemon, Long> {
     // Amber's lines
     List<Pokemon> findPokemonByType(String type);
 
+//    To express the inequality
+    List<Pokemon> findByNameNot(String name);
 
 
     //

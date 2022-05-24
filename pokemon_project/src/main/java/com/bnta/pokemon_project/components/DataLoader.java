@@ -48,7 +48,7 @@ public class DataLoader implements ApplicationRunner {
         gymLeaderRepository.saveAll(Arrays.asList(gymLeader1, gymLeader2));
 
         // Injecting the Pokémon into the Pokémon Repo
-        Pokemon pokemon1 = new Pokemon("Machamp", Type.FIGHTING, 50, trainer1);
+        Pokemon pokemon1 = new Pokemon("Machamp", Type.FIGHTING,50, trainer1);
         Pokemon pokemon2 = new Pokemon("Torkoal", Type.FIRE, 10, trainer1);
         Pokemon pokemon3 = new Pokemon("Treeko", Type.GRASS, 41, trainer1);
         Pokemon pokemon4 = new Pokemon("Krabby", Type.WATER, 25, trainer2);
