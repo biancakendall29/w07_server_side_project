@@ -27,6 +27,5 @@ public interface TrainerRepository extends JpaRepository <Trainer, Long> {
 
     Integer countByNameContaining(String letter);
 
-
     //
 }
