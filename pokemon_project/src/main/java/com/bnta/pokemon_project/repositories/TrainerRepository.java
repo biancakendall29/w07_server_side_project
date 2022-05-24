@@ -23,7 +23,8 @@ public interface TrainerRepository extends JpaRepository <Trainer, Long> {
     // Bianca's lines
 
     List<Trainer> findByNameStartingWith(String prefix);
-    List<Trainer> 
+
+    //List<Trainer> findBySizeOfPokemonsArrayGreaterThan(Integer size);
 
 
     //

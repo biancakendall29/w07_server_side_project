@@ -22,7 +22,9 @@ public interface PokemonRepository extends JpaRepository <Pokemon, Long> {
 
     // Bianca's lines
 
+    // in between and including the given range
     List<Pokemon> findByLevelBetween(Integer startLevel, Integer endLevel);
+
 
 
     //
