@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface TrainerRepository extends JpaRepository <Trainer, Long> {
     // Amber's lines
-
+    boolean existsByName(String Name);
 
     //
 
