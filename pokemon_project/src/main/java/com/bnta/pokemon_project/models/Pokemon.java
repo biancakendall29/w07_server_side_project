@@ -21,8 +21,8 @@ public class Pokemon {
     @ManyToMany
     @JoinTable(
             name = "trainers_pokemons",
-            joinColumns = {@JoinColumn(name = "trainer_id", nullable = false)},
-            inverseJoinColumns = {@JoinColumn(name = "pokemon_id", nullable = false)}
+            joinColumns = {@JoinColumn(name = "pokemon_id", nullable = false)},
+            inverseJoinColumns = {@JoinColumn(name = "trainer_id", nullable = false)}
     )
     @JsonIgnoreProperties({"pokemons"})
     private List<Trainer> trainers;
