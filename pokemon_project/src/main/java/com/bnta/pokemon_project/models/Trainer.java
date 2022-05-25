@@ -6,6 +6,7 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Entity
 @Table(name = "trainers")
@@ -88,5 +89,6 @@ public class Trainer {
     public void removeGym(Gym gym_badge){
         this.gym_badges.remove(gym_badge);
     }
+
 
 }
