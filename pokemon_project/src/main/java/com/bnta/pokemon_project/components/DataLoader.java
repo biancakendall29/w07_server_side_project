@@ -70,7 +70,9 @@ public class DataLoader implements ApplicationRunner {
         Pokemon pokemon8 = new Pokemon("Alakazam", Type.PSYCHIC, 21, Arrays.asList(trainer6));
         Pokemon pokemon9 = new Pokemon("Cinccino", Type.NORMAL, 15, Arrays.asList(trainer1, trainer2, trainer4));
         Pokemon pokemon10 = new Pokemon("Bulbasaur", Type.GRASS, 46, Arrays.asList(trainer3));
-        pokemonRepository.saveAll(Arrays.asList(pokemon1,pokemon2,pokemon3,pokemon4,pokemon5,pokemon6,pokemon7,pokemon8,pokemon9,pokemon10));
+
+        Pokemon pokemon11 = new Pokemon("Bulb", Type.GRASS, 46, Arrays.asList());
+        pokemonRepository.saveAll(Arrays.asList(pokemon1,pokemon2,pokemon3,pokemon4,pokemon5,pokemon6,pokemon7,pokemon8,pokemon9,pokemon10, pokemon11));
     }
 
 

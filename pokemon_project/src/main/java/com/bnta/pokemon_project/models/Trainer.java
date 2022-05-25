@@ -90,5 +90,10 @@ public class Trainer {
         this.gym_badges.remove(gym_badge);
     }
 
+    public Pokemon getPokemonById(Long id) {
+        Pokemon pok = getPokemons().stream().filter(pokemon -> pokemon.getId() == id).findAny().get();
+        return pok;
+    }
+
 
 }

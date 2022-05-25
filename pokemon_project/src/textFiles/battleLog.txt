@@ -1,0 +1,5 @@
+Location: Gym{id=1, name='Opelucid Gym', trainers=null, gymLeader=null}
+Date: 2022-05-25
+Trainer 1: 1 and Trainer 2: 2
+Pokemon 1: 1 and Pokemon 2: 3
+Winner: 1
