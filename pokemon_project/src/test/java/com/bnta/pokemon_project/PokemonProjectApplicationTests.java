@@ -39,6 +39,12 @@ class PokemonProjectApplicationTests {
 		assertThat(found.size()).isEqualTo(3);
 	}
 
+	@Test
+	public void canFindPokemonWithLevelLessThan(){
+		List<Pokemon> found = pokemonRepository.findByLevelLessThan(40);
+		assertThat(found.size()).isEqualTo(4);
+	}
+
 
 // -------- Gym DQ tests ------
 //	Amber's DQ testing
@@ -46,6 +52,12 @@ class PokemonProjectApplicationTests {
 	public void canFindNameContainingWord(){
 		List<Gym> found = gymRepository.findByNameContainingIgnoreCase("driftveil");
 		assertThat(found.size()).isEqualTo(1);
+	}
+
+	@Test
+	public void canFindGymNAmeByLetter() {
+		Integer found = gymRepository.countByGymNameContaining("o");
+		assertThat(found).isEqualTo(4);
 	}
 //	todo: need to add more gyms as there is not much to test on
 
@@ -62,7 +74,7 @@ class PokemonProjectApplicationTests {
 	@Test
 	public void canFindTrainersWithNameStartingWith() {
 		List<Trainer> found = trainerRepository.findByNameStartingWith("B");
-		assertThat(found.size()).isEqualTo(1);
+		assertThat(found.size()).isEqualTo(2);
 	}
 
 	@Test

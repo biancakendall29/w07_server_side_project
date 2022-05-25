@@ -7,7 +7,8 @@ import java.util.List;
 
 public interface PokemonRepository extends JpaRepository <Pokemon, Long> {
     // Amber's lines
-    List<Pokemon> findPokemonByType(String type);
+    //List<Pokemon> findPokemonByType(String type);
+    List<Pokemon> findByLevelLessThan(int level);
 
 
 

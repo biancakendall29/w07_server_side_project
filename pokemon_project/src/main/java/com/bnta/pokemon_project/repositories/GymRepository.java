@@ -8,7 +8,9 @@ import java.util.List;
 public interface GymRepository extends JpaRepository <Gym, Long> {
 //    Amber's line
 //    Basic derived queries
-    List<Gym> findGymByName(String name);
+    Integer countByGymNameContaining(String letter);
+
     List<Gym> findByNameContainingIgnoreCase(String name);
+
 
 }

@@ -34,7 +34,7 @@ public class DataLoader implements ApplicationRunner {
         // Injecting Trainers into Trainer Repo
         Trainer trainer1 = new Trainer("Barry", LocalDate.of(2000,1,1));
         Trainer trainer2 = new Trainer("Lucas", LocalDate.of(1998,5,6));
-        Trainer trainer3 = new Trainer("Chase", LocalDate.of(2010,2,30));
+        Trainer trainer3 = new Trainer("Chase", LocalDate.of(2010,2,3));
         Trainer trainer4 = new Trainer("Ash", LocalDate.of(1979,12,28));
         Trainer trainer5 = new Trainer("Brock", LocalDate.of(1992,10,10));
         Trainer trainer6 = new Trainer("Clemont", LocalDate.of(2009,9,13));
