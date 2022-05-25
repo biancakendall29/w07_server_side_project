@@ -10,6 +10,8 @@ public interface PokemonRepository extends JpaRepository <Pokemon, Long> {
     //List<Pokemon> findPokemonByType(String type);
     List<Pokemon> findByLevelLessThan(int level);
 
+    Integer countByNameContaining(String letter);
+
 
 
     //

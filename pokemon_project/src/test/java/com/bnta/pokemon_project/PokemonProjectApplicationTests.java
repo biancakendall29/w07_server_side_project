@@ -45,6 +45,12 @@ class PokemonProjectApplicationTests {
 		assertThat(found.size()).isEqualTo(4);
 	}
 
+	@Test
+	public void canFindPokemonNameByLetter(){
+		Integer found = pokemonRepository.countByNameContaining("r");
+		assertThat(found).isEqualTo(6);
+	}
+
 
 // -------- Gym DQ tests ------
 //	Amber's DQ testing
