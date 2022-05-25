@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/trainers", method = {RequestMethod.GET, RequestMethod.PUT})
+@RequestMapping("trainers")
 public class TrainerController {
 
     @Autowired
@@ -25,27 +25,27 @@ public class TrainerController {
     private GymRepository gymRepository;
 
     // INDEX
-    @GetMapping("/get")
+    @GetMapping
     public ResponseEntity<List<Trainer>> getTrainer() {
         return new ResponseEntity(trainerRepository.findAll(), HttpStatus.OK);
     }
 
     // SHOW
-    @GetMapping("/show/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Trainer> getTrainer(@PathVariable Long id) {
         var found = trainerRepository.findById(id);
         return new ResponseEntity(trainerRepository.findById(id), found.isEmpty() ? HttpStatus.NOT_FOUND : HttpStatus.OK);
     }
 
     // POST
-    @PostMapping("/post")
+    @PostMapping
     public ResponseEntity<List<Trainer>> createTrainer(@RequestBody Trainer newTrainer) {
         trainerRepository.save(newTrainer);
         return new ResponseEntity(trainerRepository.findAll(), HttpStatus.CREATED);
     }
 
     // DELETE
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<List<Trainer>> deleteTrainer(@PathVariable Long id) {
         var found = trainerRepository.findById(id);
         trainerRepository.deleteById(id);
@@ -67,7 +67,7 @@ public class TrainerController {
     }
 
     // CHANGE: ADD POKEMON
-    @PutMapping("/addPokemon/{id_trainer}/{id_pokemon}")
+    @PostMapping("/addPokemon/{id_trainer}/{id_pokemon}")
     public ResponseEntity<Trainer> addPokemonInTrainer(@PathVariable("id_trainer") Long id_trainer, @PathVariable("id_pokemon") Long id_pokemon) {
         var found = trainerRepository.findById(id_trainer);
         Trainer trainerChange = found.get();
@@ -82,7 +82,7 @@ public class TrainerController {
         );
         //trainerRepository.deleteById(id_trainer);
         //TODO: save added pokemon
-        trainerRepository.save(trainerChange);
+        //trainerRepository.save(trainerChange);
         return new ResponseEntity(trainerChange, found.isEmpty() ? HttpStatus.NOT_FOUND : HttpStatus.OK);
     }
 

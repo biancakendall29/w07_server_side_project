@@ -14,34 +14,34 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/pokemons", method = {RequestMethod.GET, RequestMethod.PUT})
+@RequestMapping("pokemons")
 public class PokemonController {
 
     @Autowired
     private PokemonRepository pokemonRepository;
 
     // INDEX
-    @GetMapping("/get")
+    @GetMapping
     public ResponseEntity<List<Pokemon>> getPokemons() {
         return new ResponseEntity(pokemonRepository.findAll(), HttpStatus.OK);
     }
 
     // SHOW
-    @GetMapping("/show/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Pokemon> getPokemon(@PathVariable Long id) {
         var found = pokemonRepository.findById(id);
         return new ResponseEntity(pokemonRepository.findById(id), found.isEmpty() ? HttpStatus.NOT_FOUND : HttpStatus.OK);
     }
 
     // POST
-    @PostMapping("/post")
+    @PostMapping
     public ResponseEntity<List<Pokemon>> createPokemon(@RequestBody Pokemon newPokemon) {
         pokemonRepository.save(newPokemon);
         return new ResponseEntity(pokemonRepository.findAll(), HttpStatus.CREATED);
     }
 
     // DELETE
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<List<Pokemon>> deletePokemon(@PathVariable Long id) {
         var found = pokemonRepository.findById(id);
         pokemonRepository.deleteById(id);
