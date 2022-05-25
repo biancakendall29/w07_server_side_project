@@ -10,25 +10,17 @@ import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
 
-@Entity
-@Table(name = "battles")
 public class Battle {
 
     @Autowired
     PokemonRepository pokemonRepository;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column
     private Gym location;
-    @Column
     private LocalDate date;
     //private Trainer trainer1; // trainer1 wins = 1
     //private Trainer trainer2; // trainer2 wine = 0
-    @Column
     private Trainer[] trainersBattling = new Trainer[2];
-    @Column
     private boolean result;
 
     public Battle(Gym location, LocalDate date, Trainer[] trainersBattling, boolean result) {
@@ -95,7 +87,7 @@ public class Battle {
         this.result = result;
     }
 
-    public Pokemon[] selectPokemons() {
+    public Pokemon[] selectPokemons(Trainer[] trainersBattling) {
         // Trainer1
         List<Long> pokemonsTrainer1 = trainersBattling[1].getPokemons().stream()
                 .map(pok -> pok.getId())
@@ -120,11 +112,6 @@ public class Battle {
                 .findAny().get();
 
         return new Pokemon[]{pok1, pok2};
-    }
-    public void givenList_shouldReturnARandomElement() {
-        List<Integer> givenList = Arrays.asList(1, 2, 3);
-        Random rand = new Random();
-        int randomElement = givenList.get(rand.nextInt(givenList.size()));
     }
 
 
