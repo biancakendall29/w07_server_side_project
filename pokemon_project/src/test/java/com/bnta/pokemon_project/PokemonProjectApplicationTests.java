@@ -55,8 +55,8 @@ class PokemonProjectApplicationTests {
 	}
 
 	@Test
-	public void canFindGymNAmeByLetter() {
-		Integer found = gymRepository.countByGymNameContaining("o");
+	public void canFindGymNameByLetter() {
+		Integer found = gymRepository.countByNameContaining("o");
 		assertThat(found).isEqualTo(4);
 	}
 //	todo: need to add more gyms as there is not much to test on
