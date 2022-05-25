@@ -89,6 +89,11 @@ class PokemonProjectApplicationTests {
 		assertThat(found).isEqualTo(3);
 	}
 
+//	@Test
+//	public void canFindTrainerExists(){
+//		boolean found = trainerRepository.existsByName("Barry");
+//	}
+
 
 // ------------ Gym Leader DQ tests -------
 //	Naim's DQ testing
