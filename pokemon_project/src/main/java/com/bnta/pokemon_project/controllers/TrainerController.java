@@ -1,8 +1,10 @@
 package com.bnta.pokemon_project.controllers;
 
 import com.bnta.pokemon_project.models.Gym;
+import com.bnta.pokemon_project.models.Pokemon;
 import com.bnta.pokemon_project.models.Trainer;
 import com.bnta.pokemon_project.repositories.GymRepository;
+import com.bnta.pokemon_project.repositories.PokemonRepository;
 import com.bnta.pokemon_project.repositories.TrainerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,6 +19,10 @@ public class TrainerController {
 
     @Autowired
     private TrainerRepository trainerRepository;
+    @Autowired
+    private PokemonRepository pokemonRepository;
+    @Autowired
+    private GymRepository gymRepository;
 
     // INDEX
     @GetMapping
@@ -45,4 +51,70 @@ public class TrainerController {
         trainerRepository.deleteById(id);
         return new ResponseEntity(trainerRepository.findAll(), found.isEmpty() ? HttpStatus.NOT_FOUND : HttpStatus.OK);
     }
+
+    // CHANGE: REMOVE POKEMON
+    @PutMapping("/removePokemon/{id_trainer}/{id_pokemon}")
+    public ResponseEntity<Trainer> removePokemonInTrainer(@PathVariable("id_trainer") Long id_trainer, @PathVariable("id_pokemon") Long id_pokemon) {
+        var found = trainerRepository.findById(id_trainer);
+        Trainer trainerChange = found.get();
+        trainerChange.removePokemon(
+                pokemonRepository.findAll()
+                        .stream()
+                        .filter(pok -> pok.getId() == id_pokemon)
+                        .findAny().get()
+                );
+        return new ResponseEntity(trainerRepository.findById(id_trainer).get(), found.isEmpty() ? HttpStatus.NOT_FOUND : HttpStatus.OK);
+    }
+
+    // CHANGE: ADD POKEMON
+    @PostMapping("/addPokemon/{id_trainer}/{id_pokemon}")
+    public ResponseEntity<Trainer> addPokemonInTrainer(@PathVariable("id_trainer") Long id_trainer, @PathVariable("id_pokemon") Long id_pokemon) {
+        var found = trainerRepository.findById(id_trainer);
+        Trainer trainerChange = found.get();
+        if (trainerChange.getPokemons().stream().filter(pok -> pok.getId() == id_pokemon).findAny().isPresent()) {
+            return new ResponseEntity(trainerRepository.findById(id_trainer).get(), HttpStatus.ALREADY_REPORTED);
+        }
+        trainerChange.addPokemon(
+                pokemonRepository.findAll()
+                        .stream()
+                        .filter(pok -> pok.getId() == id_pokemon)
+                        .findAny().get()
+        );
+        //trainerRepository.deleteById(id_trainer);
+        //TODO: save added pokemon
+        //trainerRepository.save(trainerChange);
+        return new ResponseEntity(trainerChange, found.isEmpty() ? HttpStatus.NOT_FOUND : HttpStatus.OK);
+    }
+
+    // CHANGE: REMOVE GYM BADGE
+    @PutMapping("/removeGym/{id_trainer}/{id_gym}")
+    public ResponseEntity<Trainer> removeGymInTrainer(@PathVariable("id_trainer") Long id_trainer, @PathVariable("id_gym") Long id_gym) {
+        var found = trainerRepository.findById(id_trainer);
+        Trainer trainerChange = found.get();
+        trainerChange.removeGym(
+                gymRepository.findAll()
+                        .stream()
+                        .filter(pok -> pok.getId() == id_gym)
+                        .findAny().get()
+        );
+        return new ResponseEntity(trainerRepository.findById(id_trainer).get(), found.isEmpty() ? HttpStatus.NOT_FOUND : HttpStatus.OK);
+    }
+
+    // CHANGE: ADD GYM BADGE
+    @PutMapping("/addGym/{id_trainer}/{id_gym}")
+    public ResponseEntity<Trainer> addGymInTrainer(@PathVariable("id_trainer") Long id_trainer, @PathVariable("id_gym") Long id_gym) {
+        var found = trainerRepository.findById(id_trainer);
+        Trainer trainerChange = found.get();
+        if (trainerChange.getPokemons().stream().filter(pok -> pok.getId() == id_gym).findAny().isPresent()) {
+            return new ResponseEntity(trainerRepository.findById(id_trainer).get(), HttpStatus.ALREADY_REPORTED);
+        }
+        trainerChange.addGym(
+                gymRepository.findAll()
+                        .stream()
+                        .filter(pok -> pok.getId() == id_gym)
+                        .findAny().get()
+        );
+        return new ResponseEntity(trainerRepository.findById(id_trainer).get(), found.isEmpty() ? HttpStatus.NOT_FOUND : HttpStatus.OK);
+    }
+
 }
