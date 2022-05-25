@@ -17,7 +17,7 @@ public class TrainerTest {
     @BeforeEach
     public void setUp(){
         trainer = new Trainer("Bianca", LocalDate.of(1999,3,14));
-        pokemon = new Pokemon("pikachu", Type.ELECTRIC,30, trainer);
+        pokemon = new Pokemon("pikachu", Type.ELECTRIC,30, Arrays.asList(trainer));
         gym_badge = new Gym("Pure Gym", Arrays.asList(trainer));
     }
 

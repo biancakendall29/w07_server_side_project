@@ -18,18 +18,22 @@ public class Pokemon {
     private Type type; // enum
     @Column
     private int level; // 1 - 100
-    @ManyToOne
-    @JoinColumn(name = "trainer_id")
-    //@JsonIgnoreProperties({"trainer"})
-    private Trainer trainer;
+    @ManyToMany
+    @JoinTable(
+            name = "trainers_pokemons",
+            joinColumns = {@JoinColumn(name = "trainer_id", nullable = false)},
+            inverseJoinColumns = {@JoinColumn(name = "pokemon_id", nullable = false)}
+    )
+    @JsonIgnoreProperties({"pokemons"})
+    private List<Trainer> trainers;
     //need to add code for enum in this class for derived query
 
 //    CONSTRUCTORS
-    public Pokemon(String name, Type type, int level, Trainer trainer) {
+    public Pokemon(String name, Type type, int level, List<Trainer> trainers) {
         this.name = name;
         this.type = type;
         this.level = level;
-        this.trainer = trainer;
+        this.trainers = trainers;
     }
 
     public Pokemon() {}
@@ -63,12 +67,12 @@ public class Pokemon {
         this.level = level;
     }
 
-    public Trainer getTrainer() {
-        return trainer;
+    public List<Trainer> getTrainers() {
+        return trainers;
     }
 
-    public void setTrainer(Trainer trainers) {
-        this.trainer = trainer;
+    public void setTrainers(List<Trainer> trainers) {
+        this.trainers = trainers;
     }
 
     //    public void assignTrainer(Trainer trainer) {
@@ -82,7 +86,7 @@ public class Pokemon {
                 ", name='" + name + '\'' +
                 ", type=" + type +
                 ", level=" + level +
-                ", trainer=" + trainer +
+                ", trainers=" + trainers +
                 '}';
     }
 }
