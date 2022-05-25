@@ -1,16 +1,34 @@
 package com.bnta.pokemon_project.models;
 
+import com.bnta.pokemon_project.repositories.PokemonRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
+import java.util.stream.Collectors;
 
+@Entity
+@Table(name = "battles")
 public class Battle {
 
+    @Autowired
+    PokemonRepository pokemonRepository;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column
     private Gym location;
+    @Column
     private LocalDate date;
     //private Trainer trainer1; // trainer1 wins = 1
     //private Trainer trainer2; // trainer2 wine = 0
+    @Column
     private Trainer[] trainersBattling = new Trainer[2];
+    @Column
     private boolean result;
 
     public Battle(Gym location, LocalDate date, Trainer[] trainersBattling, boolean result) {
@@ -76,6 +94,39 @@ public class Battle {
     public void setResult(boolean result) {
         this.result = result;
     }
+
+    public Pokemon[] selectPokemons() {
+        // Trainer1
+        List<Long> pokemonsTrainer1 = trainersBattling[1].getPokemons().stream()
+                .map(pok -> pok.getId())
+                .collect(Collectors.toList());
+        Random rand = new Random();
+        int randomId1 = Math.toIntExact(pokemonsTrainer1.get(rand.nextInt(pokemonsTrainer1.size())));
+
+        // Trainer2
+        List<Long> pokemonsTrainer2 = trainersBattling[2].getPokemons().stream()
+                .map(pok -> pok.getId())
+                .collect(Collectors.toList());
+        Random rand2 = new Random();
+        int randomId2 = Math.toIntExact(pokemonsTrainer2.get(rand2.nextInt(pokemonsTrainer2.size())));
+
+        Pokemon pok1 = pokemonRepository.findAll()
+                .stream()
+                .filter(pok -> pok.getId() == randomId1)
+                .findAny().get();
+        Pokemon pok2 = pokemonRepository.findAll()
+                .stream()
+                .filter(pok -> pok.getId() == randomId2)
+                .findAny().get();
+
+        return new Pokemon[]{pok1, pok2};
+    }
+    public void givenList_shouldReturnARandomElement() {
+        List<Integer> givenList = Arrays.asList(1, 2, 3);
+        Random rand = new Random();
+        int randomElement = givenList.get(rand.nextInt(givenList.size()));
+    }
+
 
     @Override
     public String toString() {
