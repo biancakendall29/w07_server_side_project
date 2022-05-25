@@ -21,15 +21,15 @@ public class Pokemon {
     @ManyToOne
     @JoinColumn(name = "trainer_id")
     //@JsonIgnoreProperties({"trainer"})
-    private List<Trainer> trainers;
+    private Trainer trainer;
     //need to add code for enum in this class for derived query
 
 //    CONSTRUCTORS
-    public Pokemon(String name, Type type, int level, List<Trainer> trainers) {
+    public Pokemon(String name, Type type, int level, Trainer trainer) {
         this.name = name;
         this.type = type;
         this.level = level;
-        this.trainers = trainers;
+        this.trainer = trainer;
     }
 
     public Pokemon() {}
@@ -63,12 +63,12 @@ public class Pokemon {
         this.level = level;
     }
 
-    public List<Trainer> getTrainer() {
-        return trainers;
+    public Trainer getTrainer() {
+        return trainer;
     }
 
-    public void setTrainer(List<Trainer> trainers) {
-        this.trainers = trainers;
+    public void setTrainer(Trainer trainers) {
+        this.trainer = trainer;
     }
 
     //    public void assignTrainer(Trainer trainer) {
@@ -82,7 +82,7 @@ public class Pokemon {
                 ", name='" + name + '\'' +
                 ", type=" + type +
                 ", level=" + level +
-                ", trainer=" + trainers +
+                ", trainer=" + trainer +
                 '}';
     }
 }

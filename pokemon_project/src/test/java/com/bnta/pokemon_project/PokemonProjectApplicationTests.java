@@ -29,6 +29,9 @@ class PokemonProjectApplicationTests {
 	@Test
 	void contextLoads() {
 	}
+
+
+//	------- Pokemon DQ tests -------
 //	Bianca's DQ testing
 	@Test
 	public void canFindPokemonsWithLevelBetween() {
@@ -36,6 +39,8 @@ class PokemonProjectApplicationTests {
 		assertThat(found.size()).isEqualTo(3);
 	}
 
+
+// -------- Gym DQ tests ------
 //	Amber's DQ testing
 	@Test
 	public void canFindNameContainingWord(){
@@ -51,6 +56,8 @@ class PokemonProjectApplicationTests {
 //	}
 	// is an enum extra steps must be added to the main code
 
+
+//	------ Trainer DQ tests --------
 //	Bianca's DT testing
 	@Test
 	public void canFindTrainersWithNameStartingWith() {
@@ -64,6 +71,8 @@ class PokemonProjectApplicationTests {
 		assertThat(found).isEqualTo(3);
 	}
 
+
+// ------------ Gym Leader DQ tests -------
 //	Naim's DQ testing
 	@Test
 	public void canFindLeaderName () {
