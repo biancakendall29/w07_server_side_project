@@ -1,6 +1,8 @@
 package com.bnta.pokemon_project.models;
 
+import com.bnta.pokemon_project.repositories.TrainerRepository;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 import java.io.File;
@@ -13,7 +15,6 @@ import java.util.List;
 @Entity
 @Table(name = "gyms")
 public class Gym{
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -75,16 +76,18 @@ public class Gym{
 
     // Battle
     // Call from controller as a request
-    public void addBattle(Battle battle) throws IOException {
-        // call select pokemons method
-        //Pokemon[] pokemonsBattling = selectPokemons(trainersBattling);
+    public void addBattle(Battle battle, Trainer[] trainers, Pokemon[] pokemons) throws IOException {
 
-        Long winner;
+
+        String winner;
+        String winnerPokemon;
         if (battle.getResult() == true) {
-            winner = battle.getTrainer_ids()[0];
+            winner = trainers[0].getName();
+            winnerPokemon = pokemons[0].getName();
         }
         else {
-            winner = battle.getTrainer_ids()[1];
+            winner = trainers[1].getName();
+            winnerPokemon = pokemons[1].getName();
         }
 
         File file = new File("src//textFiles/battleLog.txt");
@@ -96,9 +99,10 @@ public class Gym{
         PrintWriter printWriter = new PrintWriter(fileWriter);
         printWriter.println("Location: " + battle.getLocation());
         printWriter.println("Date: " + battle.getDate());
-        printWriter.println("Trainer 1: " + battle.getTrainer_ids()[0] + " and Trainer 2: " + battle.getTrainer_ids()[1]);
-        printWriter.println("Pokemon 1: " + battle.getPokemon_ids()[0] + " and Pokemon 2: " + battle.getPokemon_ids()[1]);
-        printWriter.println("Winner: " + winner);
+        printWriter.println("Trainer 1: " + trainers[0].getName() + " WITH Pokemon: " + pokemons[0].getName());
+        printWriter.println("Trainer 2: " + trainers[1].getName() + " WITH Pokemon: " + pokemons[1].getName());
+
+        printWriter.println("Winner: " + winner + " and " + winnerPokemon);
 
         printWriter.flush();
         printWriter.close();

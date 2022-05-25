@@ -2,8 +2,12 @@ package com.bnta.pokemon_project.controllers;
 
 import com.bnta.pokemon_project.models.Battle;
 import com.bnta.pokemon_project.models.Gym;
+import com.bnta.pokemon_project.models.Pokemon;
+import com.bnta.pokemon_project.models.Trainer;
 import com.bnta.pokemon_project.repositories.GymLeaderRepository;
 import com.bnta.pokemon_project.repositories.GymRepository;
+import com.bnta.pokemon_project.repositories.PokemonRepository;
+import com.bnta.pokemon_project.repositories.TrainerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +25,10 @@ public class GymController {
     private GymRepository gymRepository;
     @Autowired
     private GymLeaderRepository gymLeaderRepository;
+    @Autowired
+    private TrainerRepository trainerRepository;
+    @Autowired
+    private PokemonRepository pokemonRepository;
 
     // INDEX
     @GetMapping
@@ -66,13 +74,19 @@ public class GymController {
 
     @PostMapping("/battle/{id}")
     public void createBattle(@PathVariable Long id, @RequestBody Battle newBattle) throws IOException {
-        var found = gymRepository.findById(id);
-        Gym gymBattle = found.get();
-        //Long[] trainersBattling = {trainer1, trainer2};
-        //Long[] pokemonsBattling = {pok1, pok2};
-        newBattle.setDate(LocalDate.now());
-        //gymBattle.addBattle(gymBattle, LocalDate.now(), trainersBattling, pokemonsBattling, result);
-        gymBattle.addBattle(newBattle);
+        var found = gymRepository.findById(id); // find gym from id input by user in path
+        Gym gymBattle = found.get(); // convert to type Gym
+        newBattle.setDate(LocalDate.now()); // set date to today's date
+
+        Trainer trainer1 = trainerRepository.findById(newBattle.getTrainer_ids()[0]).stream().findAny().get();
+        Trainer trainer2 = trainerRepository.findById(newBattle.getTrainer_ids()[1]).stream().findAny().get();
+        Trainer[] trainers = {trainer1, trainer2};
+
+        Pokemon pok1 = pokemonRepository.findById(newBattle.getPokemon_ids()[0]).stream().findAny().get();
+        Pokemon pok2 = pokemonRepository.findById(newBattle.getPokemon_ids()[1]).stream().findAny().get();
+        Pokemon[] poks = {pok1, pok2};
+
+        gymBattle.addBattle(newBattle, trainers, poks);
     }
 
 }
