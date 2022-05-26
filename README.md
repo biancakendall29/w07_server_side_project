@@ -38,13 +38,7 @@ Our project requirements and development schedule can be found [here](https://gi
 
 # Using the API - HTTP Request
 ## Plain Old Java (POJO)
-In this section, the POJOs used in the project are listed along with their properties and related JSON structure when using some `POST`and `GET` requests:
-
-| HTTP Request      | Type | Function    |
-| :---        |    :----   |          :--- |
-| `localhost:8081/trainer/{id}`  | GET       | Get trainer by id    |
-| `localhost:8081/pokemon/addpokemon`  | POST        | Adds a new pokemon (JSON) to database using Request Body.    |
-| `localhost:8081/pokemon/{name}`  | GET        | Get Pokemon by name    |
+In this section, the POJOs used in the project are listed along with their properties and related JSON structure when using some `POST`and `GET` requests.
 
 The API can be used with the following HTTP requests, in the Postman desktop application:
 
