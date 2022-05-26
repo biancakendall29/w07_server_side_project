@@ -63,14 +63,9 @@ Now input the pokemon data. This should be done in the `JSON` Object format with
 ### @PUT
 Ensure your Postman is set to run a HTTP `PUT` request where you update a pokemon.
 
-If you have already added a pokemon from the example but you want to change one of their properties such as their level. It is similar to adding a pokemon but you will need to know the id number and the command for what you want to change. Run the code `localhost:8081/pokemon/changeLevel/{id}/{the level you want}` and insert the new body as:
+If you have already added a pokemon from the example but you want to change one of their properties such as their level. It is similar to adding a pokemon but you will need to know the id number and the command for what you want to change. Run the code `localhost:8081/pokemon/changeLevel/{id}/{the level you want}`
 
-        {
-            "name" "";
-            "type" --;
-            "level" --;
-        }
-
+> The `PUT` requests do not save permanetly 
 
 ### @DELETE
 Ensure your Postman is set to run a HTTP `DELETE` request so you can delete a pokemon.
@@ -89,7 +84,7 @@ These commands work as the Pokemon commands shown above, except with a different
 | :---        |    :----   |          :---- |        :---|
 | `POST`      | `localhost:8081/trainer/`   | `localhost:8081/gym/` | `localhost:8081/gymLeader/` |
 | `GET`' | `localhost:8081/trainer/`       | `localhost:8081/gym/`   | `localhost:8081/gymLeader/` |
-| `PUT`  | `localhost:8081/trainer/{id}`       | `localhost:8081/gym/{id}`   | `localhost:8081/gymLeader/{id}` |
+| `PUT`  | `localhost:8081/trainer/{command name}/{id}/{what you need to change}`       | `localhost:8081/gym/{command name}/{id}/{what you want to change}`   | `localhost:8081/gymLeader/{command name}/{id}/{what you want to change}` |
 | `DELETE`  | `localhost:8081/trainer/{id}`        | `localhost:8081/gym/{id}`   | `localhost:8081/gymLeader/{id}` |
 
 # Further Implementation and Extensions
@@ -101,7 +96,7 @@ Test Driven Development (TDD) would be used as we did not implement it from the 
 ## Technical Measures
 We would like to complete the battle functionality where you can pick or choose a Pokemon's ability when they in a battle which would be similar to the video game itself.
 
-Some Pokemon do not have just one attribute type but two so we wanted to implement two enums into a variable then implement a dereived query to select the pokemon of a certain attribute type, for example, finding a water type pokemon. However, this deemed to be more complex than what we initially thought.
+Some Pokemon do not have just one attribute type but two so we wanted to implement two enums into a variable then implement a derived query to select the pokemon of a certain attribute type, for example, finding a water type pokemon. However, this deemed to be more complex than what we initially thought.
 
-# Acknowldegements
+# Acknowledegements
 A massive thanks to the [BNTA](https://techacademy.brightnetwork.co.uk/) team, and especially to our trainers [Richard](https://github.com/biancakendall29/w07_server_side_project#summary) and [Anna](https://github.com/biancakendall29/w07_server_side_project#summary)!
