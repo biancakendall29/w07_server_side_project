@@ -47,7 +47,7 @@ The API can be used with the following HTTP requests, in the Postman desktop app
 To get the list of all pokemon : `localhost:8081/pokemon` 
 To get a specific pokemon, if you know the id, your format should be as follows `localhost:8081/pokemon/{id}`
 
--- where you replace {id} with a known id number --
+> where you replace {id} with a known id number
 
 ### @POST
 Ensure your Postman is set to run a HTTP `POST` request : `localhost:8081/pokemon`
@@ -76,11 +76,11 @@ If you have already added a pokemon from the example but you want to change one 
 Ensure your Postman is set to run a HTTP `DELETE` request so you can delete a pokemon.
 Imagine you have already added a Pokemon from the example, however, you want to delete that record. Again, run : `localhost:8081/pokemon/{id}`
 
--- where {id} can be replaced with an id of the pokemon you want to delete --
+> where {id} can be replaced with an id of the pokemon you want to delete
 
 To delete all Pokemon, simiply run `localhost:8081/pokemon/` with the `@DELETE` request selected, it will delete all records. You must **BE CARFUL** when doing this as it is **NOT** reversible.
 
-Also, is you add more Pokemon, the previous IDs will not be used again.
+ > Also, is you add more Pokemon, the previous IDs will not be used again.
 
 
 ## Other Commands
