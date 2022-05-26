@@ -77,18 +77,9 @@ public class Gym{
     // Battle
     // Call from controller as a request
     public void addBattle(Battle battle, Trainer[] trainers, Pokemon[] pokemons) throws IOException {
-
-
         String winner;
-        String winnerPokemon;
-        if (battle.getResult() == true) {
-            winner = trainers[0].getName();
-            winnerPokemon = pokemons[0].getName();
-        }
-        else {
-            winner = trainers[1].getName();
-            winnerPokemon = pokemons[1].getName();
-        }
+        Pokemon winnerPokemon;
+        int increase = battle.calculateLevelIncrease(pokemons, battle.getResult());
 
         File file = new File("src//textFiles/battleLog.txt");
 
@@ -97,12 +88,25 @@ public class Gym{
         }
         FileWriter fileWriter = new FileWriter(file, true);
         PrintWriter printWriter = new PrintWriter(fileWriter);
-        printWriter.println("Location: " + battle.getLocation());
-        printWriter.println("Date: " + battle.getDate());
-        printWriter.println("Trainer 1: " + trainers[0].getName() + " WITH Pokemon: " + pokemons[0].getName());
-        printWriter.println("Trainer 2: " + trainers[1].getName() + " WITH Pokemon: " + pokemons[1].getName());
+        printWriter.println("[");
+        printWriter.println("   Location: " + battle.getLocation());
+        printWriter.println("   Date: " + battle.getDate());
+        printWriter.println("   Trainer 1: " + trainers[0].getName() + " WITH Pokemon: " + pokemons[0].getName() + " of original level:  " + pokemons[0].getLevel());
+        printWriter.println("   Trainer 2: " + trainers[1].getName() + " WITH Pokemon: " + pokemons[1].getName() + " of original level:  " + pokemons[1].getLevel());
 
-        printWriter.println("Winner: " + winner + " and " + winnerPokemon);
+        if (battle.getResult() == true) {
+            winner = trainers[0].getName();
+            battle.increaseResultOfWinner(pokemons[0], increase);
+            winnerPokemon = pokemons[0];
+        }
+        else {
+            winner = trainers[1].getName();
+            battle.increaseResultOfWinner(pokemons[1], increase);
+            winnerPokemon = pokemons[1];
+        }
+
+        printWriter.println("   Winner: " + winner + " and " + winnerPokemon.getName() + " with level up to " + winnerPokemon.getLevel());
+        printWriter.println("]");
 
         printWriter.flush();
         printWriter.close();
