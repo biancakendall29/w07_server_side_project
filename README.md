@@ -38,7 +38,7 @@ See below for a list of methods used in each class and their descriptions:
 In this section, the POJOs used in the project are listed along with their properties and related JSON structure when using `POST`and `PUT` requests:
 
 | HTTP Request      | Type | Function    |
-| :---        |    :----:   |          ---: |
+| :---        |    :----   |          :--- |
 | Pokemon      | properties    | code  |
 | Trainer  | properties        | code    |
 | Gym  | properties        | code    |
@@ -90,7 +90,7 @@ Also, is you add more pokemon, the previous IDs will not be used again.
 ## Other Commands
 These commands work as the pokemon commands shown above, except with a different command substitutied for 'pokemon'
 | HTTP Request      | Trainer |  Gym    |  Gym Leader  |
-| :---        |    :----:   |          :----: |        ---:|
+| :---        |    :----   |          :---- |        :---|
 | `POST`      | `localhost:8081/trainer/`   | `localhost:8081/gym/` | `localhost:8081/gymLeader/` |
 | `GET`' | `localhost:8081/trainer/`       | `localhost:8081/gym/`   | `localhost:8081/gymLeader/` |
 | `PUT`  | `localhost:8081/trainer/{id}`       | `localhost:8081/gym/{id}`   | `localhost:8081/gymLeader/{id}` |
