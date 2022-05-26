@@ -7,7 +7,6 @@ We are Pokemon trainers, a team consisting of [BNTA](https://techacademy.brightn
 - [Summary](#summary)
 - [Step-by- step instructions for inital set-up](#step-by-step-instructions-for-initial-set-up)
 - [Project Structure](#project-structure)
-- [Methods](#methods)
 - [Using the API - HTTP Requests](#using-the-api---http-request)
     - [Pokemon Commands](#pokemon-commands)   
     - [Other Commands](#other-commands)
@@ -16,22 +15,23 @@ We are Pokemon trainers, a team consisting of [BNTA](https://techacademy.brightn
 # Summary
 This collaborative project was completed as part of the Bright Network Technology Academy programme. This project consists of a Pokemon ---, based on a classical video game called Pokemon.
 
-The API was created using Java, SpringBoot, and PostgresQL, as well as, using Postman for testing. 
+The API was created using Java, and Spring boot, as well as, using Postman for testing. 
 
 There are two modes:
 
 
 # Step-by-step instructions for initial set up
+1. Make sure that you have installed Java.
+
+2. Clone this repository : `git clone git@github.com:biancakendall29/w07_server_side_project.git` and open in you Java IDE
+
+3. If you don't already have it, download Postman so that you can interact with the API, the HTTP quereis you will make will be on : `localhost:8081/(command inserted here)`
 
 # Project Structure
 
 ## Entity Relationship (ER) Diagram
 
-insert the diagram here
-
-# Methods
-See below for a list of methods used in each class and their descriptions:
-
+[insert the diagram here]
 
 # Using the API - HTTP Request
 ## Plain Old Java (POJO)
@@ -100,11 +100,12 @@ These commands work as the pokemon commands shown above, except with a different
 If were to add further implementations to the project, they woudl be as follows:
 
 ## Non-Technical Measures
+[Group discussion here ...]
 
 ## Technical Measures
 We would like to complete the battle functionality where you can pick or choose a Pokemon's ability when they in a battle which would be similar to the video game itself.
 
-We ...
+Some Pokemon do not have just one attribute type but two so we wanted to implement two enums into a variable then implement a dereived query to select the pokemon of a certain attribute type, for example, finding a water type pokemon. However, this deemed to be more complex than what we initially thought.
 
 # Acknowldegements
 A massive thanks to the [BNTA](https://techacademy.brightnetwork.co.uk/) team, and especially to our trainers [Richard](https://github.com/biancakendall29/w07_server_side_project#summary) and [Anna](https://github.com/biancakendall29/w07_server_side_project#summary)!
