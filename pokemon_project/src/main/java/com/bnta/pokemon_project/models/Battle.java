@@ -82,7 +82,7 @@ public class Battle {
         return increase;
     }
 
-    public void increaseResultOfWinner(Pokemon pokemon, int increase) {
+    public void increaseLevelOfWinner(Pokemon pokemon, int increase) {
         int original = pokemon.getLevel();
         pokemon.setLevel(original + increase);
     }

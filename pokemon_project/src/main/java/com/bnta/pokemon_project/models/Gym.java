@@ -96,12 +96,12 @@ public class Gym{
 
         if (battle.getResult() == true) {
             winner = trainers[0].getName();
-            battle.increaseResultOfWinner(pokemons[0], increase);
+            battle.increaseLevelOfWinner(pokemons[0], increase);
             winnerPokemon = pokemons[0];
         }
         else {
             winner = trainers[1].getName();
-            battle.increaseResultOfWinner(pokemons[1], increase);
+            battle.increaseLevelOfWinner(pokemons[1], increase);
             winnerPokemon = pokemons[1];
         }
 
