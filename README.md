@@ -31,7 +31,8 @@ There are two modes:
 
 ## Entity Relationship (ER) Diagram
 
-[insert the diagram here]
+![This is an image](https://github.com/biancakendall29/w07_server_side_project/blob/main/Entity_relationship_diagram2.JPG)
+
 
 # Using the API - HTTP Request
 ## Plain Old Java (POJO)
