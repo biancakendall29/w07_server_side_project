@@ -1,16 +1,22 @@
 package com.bnta.pokemon_project.controllers;
 
+import com.bnta.pokemon_project.models.Battle;
 import com.bnta.pokemon_project.models.Gym;
 import com.bnta.pokemon_project.models.Pokemon;
 import com.bnta.pokemon_project.models.Trainer;
 import com.bnta.pokemon_project.repositories.GymLeaderRepository;
 import com.bnta.pokemon_project.repositories.GymRepository;
+import com.bnta.pokemon_project.repositories.PokemonRepository;
+import com.bnta.pokemon_project.repositories.TrainerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
+import java.time.LocalDate;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(value = "gyms")
@@ -20,6 +26,10 @@ public class GymController {
     private GymRepository gymRepository;
     @Autowired
     private GymLeaderRepository gymLeaderRepository;
+    @Autowired
+    private TrainerRepository trainerRepository;
+    @Autowired
+    private PokemonRepository pokemonRepository;
 
     // INDEX
     @GetMapping
@@ -61,6 +71,35 @@ public class GymController {
                         .findAny().get()
         );
         return new ResponseEntity(gymRepository.findById(id_gym).get(), found.isEmpty() ? HttpStatus.NOT_FOUND : HttpStatus.ACCEPTED);
+    }
+
+    @PostMapping("/battle/{id}")
+    public ResponseEntity<Battle> createBattle(@PathVariable Long id, @RequestBody Battle newBattle) throws IOException {
+        var found = gymRepository.findById(id); // find gym from id input by user in path
+        Gym gymBattle = found.get(); // convert to type Gym
+        newBattle.setDate(LocalDate.now()); // set date to today's date
+        newBattle.setLocation(gymBattle.getName());
+
+        Trainer trainer1 = trainerRepository.findById(newBattle.getTrainer_ids()[0]).stream().findAny().get();
+        Trainer trainer2 = trainerRepository.findById(newBattle.getTrainer_ids()[1]).stream().findAny().get();
+        Trainer[] trainers = {trainer1, trainer2};
+
+        List<Long> pok_ids1 = trainer1.getPokemons().stream().map(pok -> pok.getId()).collect(Collectors.toList());
+        List<Long> pok_ids2 = trainer2.getPokemons().stream().map(pok -> pok.getId()).collect(Collectors.toList());
+
+        if ( pok_ids1.stream().filter(i -> i.equals(newBattle.getPokemon_ids()[0])).findAny().isEmpty() ) {
+            return new ResponseEntity(newBattle, HttpStatus.NOT_FOUND);
+        }
+        else if ( pok_ids2.stream().filter(i -> i.equals(newBattle.getPokemon_ids()[1])).findAny().isEmpty() ) {
+            return new ResponseEntity(newBattle, HttpStatus.NOT_FOUND);
+        }
+
+        Pokemon pok1 = pokemonRepository.findById(newBattle.getPokemon_ids()[0]).stream().findAny().get();
+        Pokemon pok2 = pokemonRepository.findById(newBattle.getPokemon_ids()[1]).stream().findAny().get();
+        Pokemon[] poks = {pok1, pok2};
+
+        gymBattle.addBattle(newBattle, trainers, poks);
+        return new ResponseEntity(newBattle, HttpStatus.CREATED);
     }
 
 }

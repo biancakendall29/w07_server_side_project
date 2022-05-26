@@ -19,8 +19,8 @@ public class Trainer {
     private String name;
     @Column
     private LocalDate dob;
-    @OneToMany(mappedBy = "trainer")
-    @JsonIgnoreProperties({"trainer"})
+    @ManyToMany(mappedBy = "trainers")
+    @JsonIgnoreProperties({"trainers"})
     private List<Pokemon> pokemons;
     @ManyToMany(mappedBy = "trainers")
     @JsonIgnoreProperties({"trainers"})
@@ -90,5 +90,14 @@ public class Trainer {
         this.gym_badges.remove(gym_badge);
     }
 
-
+    @Override
+    public String toString() {
+        return "Trainer{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", dob=" + dob +
+                ", pokemons=" + pokemons +
+                ", gym_badges=" + gym_badges +
+                '}';
+    }
 }
