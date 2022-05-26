@@ -1,24 +1,3 @@
-Location: Gym{id=1, name='Opelucid Gym', trainers=null, gymLeader=null}
-Date: 2022-05-25
-Trainer 1: 1 and Trainer 2: 2
-Pokemon 1: 1 and Pokemon 2: 3
-Winner: 1
-Location: Gym{id=1, name='Opelucid Gym', trainers=null, gymLeader=null}
-Date: 2022-05-25
-Trainer 1: Barry and Trainer 2: Lucas
-Pokemon 1: 1 and Pokemon 2: 3
-Winner: 2
-Location: null
-Date: 2022-05-25
-Trainer 1: Barry WITH Pokemon: Machamp
-Trainer 2: Lucas WITH Pokemon: Treeko
-Winner: Lucas and Treeko
-Location: Driftveil Gym
-Date: 2022-05-25
-Trainer 1: Barry WITH Pokemon: Machamp
-Trainer 2: Lucas WITH Pokemon: Treeko
-Winner: Lucas and Treeko
-
 [
    Location: Driftveil Gym
    Date: 2022-05-25

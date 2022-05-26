@@ -1,10 +1,6 @@
 package com.bnta.pokemon_project.controllers;
 
-import com.bnta.pokemon_project.models.Gym;
 import com.bnta.pokemon_project.models.Pokemon;
-import com.bnta.pokemon_project.models.Trainer;
-import com.bnta.pokemon_project.models.Type;
-import com.bnta.pokemon_project.repositories.GymRepository;
 import com.bnta.pokemon_project.repositories.PokemonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -56,15 +52,5 @@ public class PokemonController {
         pokemonChange.setLevel(level);
         return new ResponseEntity(pokemonRepository.findById(id).get(), found.isEmpty() ? HttpStatus.NOT_FOUND : HttpStatus.ACCEPTED);
     }
-
-//    // CHANGE: ADD ADDITIONAL TYPES
-//    //TODO: need to change type property in pokemon class to be a list
-//    @PutMapping("/addType/{id}/{type}")
-//    public ResponseEntity<Pokemon> addTypeToPokemon(@PathVariable("id") Long id, @PathVariable("type") Type type) {
-//        var found = pokemonRepository.findById(id);
-//        Pokemon pokemonChange = found.get();
-//        pokemonChange.addType(type);
-//        return new ResponseEntity(pokemonRepository.findById(id).get(), found.isEmpty() ? HttpStatus.NOT_FOUND : HttpStatus.OK);
-//    }
 
 }

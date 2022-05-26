@@ -52,22 +52,26 @@ public class TrainerController {
         return new ResponseEntity(trainerRepository.findAll(), found.isEmpty() ? HttpStatus.NOT_FOUND : HttpStatus.OK);
     }
 
+    // PUT requests: asks for id of trainer you want to add/remove a pokemon/gym badge to/from, and then the id
+    // of the pokemon/gym badge.
+
     // CHANGE: REMOVE POKEMON
     @PutMapping("/removePokemon/{id_trainer}/{id_pokemon}")
     public ResponseEntity<Trainer> removePokemonInTrainer(@PathVariable("id_trainer") Long id_trainer, @PathVariable("id_pokemon") Long id_pokemon) {
-        var found = trainerRepository.findById(id_trainer);
-        Trainer trainerChange = found.get();
+        var found = trainerRepository.findById(id_trainer); // searches for trainer in repo given trainer id
+        Trainer trainerChange = found.get(); // coverts to type Trainer
         trainerChange.removePokemon(
                 pokemonRepository.findAll()
                         .stream()
-                        .filter(pok -> pok.getId() == id_pokemon)
+                        .filter(pok -> pok.getId() == id_pokemon) // searches for pokemon in repo given id
                         .findAny().get()
                 );
+        // returns NOT FOUND if trainer did not have given pokemon in their collection originally
         return new ResponseEntity(trainerRepository.findById(id_trainer).get(), found.isEmpty() ? HttpStatus.NOT_FOUND : HttpStatus.OK);
     }
 
     // CHANGE: ADD POKEMON
-    @PostMapping("/addPokemon/{id_trainer}/{id_pokemon}")
+    @PutMapping("/addPokemon/{id_trainer}/{id_pokemon}")
     public ResponseEntity<Trainer> addPokemonInTrainer(@PathVariable("id_trainer") Long id_trainer, @PathVariable("id_pokemon") Long id_pokemon) {
         var found = trainerRepository.findById(id_trainer);
         Trainer trainerChange = found.get();
@@ -80,9 +84,6 @@ public class TrainerController {
                         .filter(pok -> pok.getId() == id_pokemon)
                         .findAny().get()
         );
-        //trainerRepository.deleteById(id_trainer);
-        //TODO: save added pokemon
-        //trainerRepository.save(trainerChange);
         return new ResponseEntity(trainerChange, found.isEmpty() ? HttpStatus.NOT_FOUND : HttpStatus.OK);
     }
 

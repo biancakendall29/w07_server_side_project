@@ -64,26 +64,37 @@ public class Battle {
         int level2 = pokemons[1].getLevel();
         int increase;
 
+        // if trainer1/pokemon1 is the winner
         if (result == true) {
+            // if pokemon1 had a higher level initially than its opponent, and won, it levels up by
+            // a quarter of the difference between their battles
             if (level1 >= level2) {
                 increase = (level1 - level2) / 4;
+                // if pokemon1 had a lower level initially than its opponent, and won, it levels up by
+                // half of the difference between their battles
             } else {
                 increase = (level2 - level1) / 2;
             }
         }
+        // if trainer2/pokemon2 is the winner
         else {
+            // if pokemon2 had a lower level initially than its opponent, and won, it levels up by
+            // half of the difference between their battles
             if (level1 >= level2) {
                 increase = (level1 - level2) / 2;
+                // if pokemon2 had a higher level initially than its opponent, and won, it levels up by
+                // a quarter of the difference between their battles
             } else {
                 increase = (level2 - level1) / 4;
             }
         }
-
+        // returns the amount for the winning pokemon's level to increase by
         return increase;
     }
 
     public void increaseLevelOfWinner(Pokemon pokemon, int increase) {
         int original = pokemon.getLevel();
+        // increases winning pokemon's level
         pokemon.setLevel(original + increase);
     }
 

@@ -1,6 +1,5 @@
 package com.bnta.pokemon_project.controllers;
 
-import com.bnta.pokemon_project.models.Gym;
 import com.bnta.pokemon_project.models.GymLeader;
 import com.bnta.pokemon_project.repositories.GymLeaderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
