@@ -63,10 +63,10 @@ Now input the pokemon data. This should be done in the `JSON` Object format with
 ### @PUT
 Ensure your Postman is set to run a HTTP `PUT` request where you update a pokemon.
 
-If you have already added a pokemon from the example but you want to change one of their properties such as their level. It is similar to adding a pokemon but you will need to know the id number. Run the code `localhost:8081/pokemon/{id}` and insert the new body as:
+If you have already added a pokemon from the example but you want to change one of their properties such as their level. It is similar to adding a pokemon but you will need to know the id number and the command for what you want to change. Run the code `localhost:8081/pokemon/changeLevel/{id}/{the level you want}` and insert the new body as:
 
         {
-            "name" --;
+            "name" "";
             "type" --;
             "level" --;
         }
