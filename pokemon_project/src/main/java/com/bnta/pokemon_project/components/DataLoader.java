@@ -42,10 +42,10 @@ public class DataLoader implements ApplicationRunner {
 
         // Injecting Gyms into Gyms Repo
         Gym gym1 = new Gym("Opelucid Gym", Arrays.asList(trainer1, trainer5));
-        Gym gym2 = new Gym("Driftveil Gym", Arrays.asList(trainer1, trainer2, trainer3));
-        Gym gym3 = new Gym("Snowpoint Gym", Arrays.asList(trainer1, trainer2, trainer4));
-        Gym gym4 = new Gym("Sunnyshore Gym", Arrays.asList(trainer1, trainer2, trainer3));
-        Gym gym5 = new Gym("Mossdeep Gym", Arrays.asList(trainer1, trainer4, trainer5, trainer6));
+        Gym gym2 = new Gym("Driftveil Gym", Arrays.asList(trainer2, trainer3));
+        Gym gym3 = new Gym("Snowpoint Gym", Arrays.asList(trainer2, trainer4));
+        Gym gym4 = new Gym("Sunnyshore Gym", Arrays.asList(trainer4, trainer2, trainer3));
+        Gym gym5 = new Gym("Mossdeep Gym", Arrays.asList(trainer4, trainer5, trainer6));
         Gym gym6 = new Gym("Striaton Gym", Arrays.asList(trainer1, trainer2, trainer3, trainer4, trainer5, trainer6));
         gymRepository.saveAll(Arrays.asList(gym1, gym2, gym3, gym4, gym5, gym6));
 
@@ -61,14 +61,14 @@ public class DataLoader implements ApplicationRunner {
         // Injecting the Pokémon into the Pokémon Repo
 
         Pokemon pokemon1 = new Pokemon("Machamp", Type.FIGHTING, 50, Arrays.asList(trainer1, trainer2));
-        Pokemon pokemon2 = new Pokemon("Torkoal", Type.FIRE, 10, Arrays.asList(trainer1));
+        Pokemon pokemon2 = new Pokemon("Torkoal", Type.FIRE, 10, Arrays.asList(trainer5));
         Pokemon pokemon3 = new Pokemon("Treeko", Type.GRASS, 41, Arrays.asList(trainer1, trainer2, trainer3));
         Pokemon pokemon4 = new Pokemon("Krabby", Type.WATER, 25, Arrays.asList(trainer2, trainer4));
         Pokemon pokemon5 = new Pokemon("Squirtle", Type.WATER, 78, Arrays.asList(trainer5, trainer6));
         Pokemon pokemon6 = new Pokemon("Chimchar", Type.FIRE, 97, Arrays.asList(trainer3, trainer4));
         Pokemon pokemon7 = new Pokemon("Klinglang", Type.STEEL, 53, Arrays.asList(trainer5));
         Pokemon pokemon8 = new Pokemon("Alakazam", Type.PSYCHIC, 21, Arrays.asList(trainer6));
-        Pokemon pokemon9 = new Pokemon("Cinccino", Type.NORMAL, 15, Arrays.asList(trainer1, trainer2, trainer4));
+        Pokemon pokemon9 = new Pokemon("Cinccino", Type.NORMAL, 15, Arrays.asList(trainer6, trainer2, trainer4));
         Pokemon pokemon10 = new Pokemon("Bulbasaur", Type.GRASS, 46, Arrays.asList(trainer3));
         pokemonRepository.saveAll(Arrays.asList(pokemon1,pokemon2,pokemon3,pokemon4,pokemon5,pokemon6,pokemon7,pokemon8,pokemon9,pokemon10));
     }

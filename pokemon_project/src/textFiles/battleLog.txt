@@ -47,3 +47,10 @@
    Trainer 2: Lucas WITH Pokemon: Krabby of original level:  25
    Winner: Lucas and Krabby with level up to 27
 ]
+[
+   Location: Opelucid Gym
+   Date: 2022-05-26
+   Trainer 1: Barry WITH Pokemon: Machamp of original level:  50
+   Trainer 2: Lucas WITH Pokemon: Krabby of original level:  25
+   Winner: Barry and Machamp with level up to 56
+]

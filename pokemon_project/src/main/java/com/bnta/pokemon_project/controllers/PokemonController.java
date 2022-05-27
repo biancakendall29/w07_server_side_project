@@ -18,7 +18,10 @@ public class PokemonController {
 
     // INDEX
     @GetMapping
-    public ResponseEntity<List<Pokemon>> getPokemons() {
+    public ResponseEntity<List<Pokemon>> getPokemonsAndLevel(@RequestParam(required = false, name="level") Integer level) {
+        if (level != null) {
+            return new ResponseEntity(pokemonRepository.findByLevelLessThan(level), HttpStatus.OK);
+        }
         return new ResponseEntity(pokemonRepository.findAll(), HttpStatus.OK);
     }
 
