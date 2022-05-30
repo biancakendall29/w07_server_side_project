@@ -17,7 +17,7 @@ This collaborative project was completed as part of the Bright Network Technolog
 
 The API was created using Java, and Spring boot, as well as, using Postman for testing. 
 
-There are is a mode:
+There is a mode:
 - A *battle function* that will allow a trainer to battle against another trainer or gym leader where the end result is randomised and the winning Pokemon increases in its level
 
 Our project requirements and development schedule can be found [here](https://github.com/biancakendall29/w07_server_side_project/blob/main/plan.md).
@@ -44,13 +44,13 @@ The API can be used with the following HTTP requests, in the Postman desktop app
 
 ## Pokemon Commands
 ### @GET
-To get the list of all pokemon : `localhost:8081/pokemon` 
-To get a specific pokemon, if you know the id, your format should be as follows `localhost:8081/pokemon/{id}`
+To get the list of all pokemon : `localhost:8081/pokemons` 
+To get a specific pokemon, if you know the id, your format should be as follows `localhost:8081/pokemons/{id}`
 
 > where you replace {id} with a known id number
 
 ### @POST
-Ensure your Postman is set to run a HTTP `POST` request : `localhost:8081/pokemon`
+Ensure your Postman is set to run a HTTP `POST` request : `localhost:8081/pokemons`
 
 Now input the pokemon data. This should be done in the `JSON` Object format within the body where it should look like so :
 
@@ -73,19 +73,19 @@ Imagine you have already added a Pokemon from the example, however, you want to 
 
 > where {id} can be replaced with an id of the pokemon you want to delete
 
-To delete all Pokemon, simiply run `localhost:8081/pokemon/` with the `@DELETE` request selected, it will delete all records. You must **BE CARFUL** when doing this as it is **NOT** reversible.
+To delete all Pokemon, simiply run `localhost:8081/pokemons/` with the `@DELETE` request selected, it will delete all records. You must **BE CARFUL** when doing this as it is **NOT** reversible.
 
  > Also, is you add more Pokemon, the previous IDs will not be used again.
 
 
 ## Other Commands
-These commands work as the Pokemon commands shown above, except with a different command substitutied for 'Pokemon'
+These commands work as the Pokemon commands shown above, except with a different command substituted for 'pokemons'
 | HTTP Request      | Trainer |  Gym    |  Gym Leader  |
 | :---        |    :----   |          :---- |        :---|
-| `POST`      | `localhost:8081/trainer/`   | `localhost:8081/gym/` | `localhost:8081/gymLeader/` |
-| `GET`' | `localhost:8081/trainer/`       | `localhost:8081/gym/`   | `localhost:8081/gymLeader/` |
-| `PUT`  | `localhost:8081/trainer/{command name}/{id}/{what you need to change}`       | `localhost:8081/gym/{command name}/{id}/{what you want to change}`   | `localhost:8081/gymLeader/{command name}/{id}/{what you want to change}` |
-| `DELETE`  | `localhost:8081/trainer/{id}`        | `localhost:8081/gym/{id}`   | `localhost:8081/gymLeader/{id}` |
+| `POST`      | `localhost:8081/trainers/`   | `localhost:8081/gyms/` | `localhost:8081/gymLeaders/` |
+| `GET`' | `localhost:8081/trainers/`       | `localhost:8081/gyms/`   | `localhost:8081/gymLeaders/` |
+| `PUT`  | `localhost:8081/trainers/{command name}/{id}/{what you need to change}`       | `localhost:8081/gyms/{command name}/{id}/{what you want to change}`   | `localhost:8081/gymLeaders/{command name}/{id}/{what you want to change}` |
+| `DELETE`  | `localhost:8081/trainers/{id}`        | `localhost:8081/gyms/{id}`   | `localhost:8081/gymLeaders/{id}` |
 
 # Further Implementation and Extensions
 If were to add further implementations to the project, they would be as follows:
@@ -97,6 +97,9 @@ Test Driven Development (TDD) would be used as we did not implement it from the 
 We would like to complete the battle functionality where you can pick or choose a Pokemon's ability when they in a battle which would be similar to the video game itself.
 
 Some Pokemon do not have just one attribute type but two so we wanted to implement two enums into a variable then implement a derived query to select the pokemon of a certain attribute type, for example, finding a water type pokemon. However, this deemed to be more complex than what we initially thought.
+
+## Quirky behaviour
+Although the PUT requests all work as expected when they are sent and viewed in the Postman PUT request response window, the changes made do not save permanently to the repository, and therefore don't appear in the GET requests afterwards.
 
 # Acknowledegements
 A massive thanks to the [BNTA](https://techacademy.brightnetwork.co.uk/) team, and especially to our trainers [Richard](https://github.com/biancakendall29/w07_server_side_project#summary) and [Anna](https://github.com/biancakendall29/w07_server_side_project#summary)!
